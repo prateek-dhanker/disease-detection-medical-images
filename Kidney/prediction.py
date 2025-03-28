@@ -54,5 +54,5 @@ def predict_and_plot(image_path):
         print(f"Prediction: Normal (Confidence: {1 - prediction:.2f})")
 
 # Run prediction and plot results
-image_path = "Kidney/yes3.png"  # Change this to your test image path
+image_path = "yes3.png"  # Change this to your test image path
 predict_and_plot(image_path)
