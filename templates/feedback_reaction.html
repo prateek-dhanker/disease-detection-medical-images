@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <title>Let Us Know Your Feedback</title>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: black;
+        font-family: 'Montserrat', sans-serif;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+      }
+
+      .panel-container {
+        background-color: rgba(20, 20, 20, 0.9);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 30px;
+        max-width: 400px;
+        margin: auto;
+      }
+
+      .panel-container strong {
+        font-size: 1.2em;
+        line-height: 1.5;
+      }
+
+      .ratings-container {
+        display: flex;
+        margin: 20px 0;
+      }
+
+      .rating {
+        flex: 1;
+        cursor: pointer;
+        padding: 20px;
+        margin: 10px 5px;
+        transition: 0.3s ease-in-out;
+      }
+
+      .rating:hover,
+      .rating.active {
+        border-radius: 4px;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      }
+
+      .rating img {
+        width: 40px;
+      }
+
+      .rating small {
+        color: white;
+        display: inline-block;
+        margin: 10px 0 0;
+      }
+
+      .rating:hover small,
+      .rating.active small {
+        color: #3498db;
+      }
+
+      .btn {
+        background-color: #3498db;
+        color: white;
+        border: 0;
+        border-radius: 6px;
+        padding: 12px 30px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: 0.3s;
+      }
+
+      .btn:hover {
+        background-color: #1d70a2;
+      }
+
+      .btn:focus {
+        outline: none;
+      }
+
+      .btn:active {
+        transform: scale(0.98);
+      }
+
+      .credit a {
+        text-decoration: none;
+        color: white;
+      }
+
+      .credit {
+        text-align: left;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="panel" class="panel-container">
+      <strong>How satisfied are you with our <br /> customer support performance?</strong>
+      <div class="ratings-container">
+        <div class="rating">
+          <img src="https://cdn-icons-png.flaticon.com/512/742/742752.png" alt="Unhappy" width="50" />
+          <small>Unhappy</small>
+        </div>
+        <div class="rating">
+          <img src="https://cdn-icons-png.flaticon.com/512/742/742751.png" alt="Neutral" width="50" />
+          <small>Neutral</small>
+        </div>
+    
+        <div class="rating active">
+          <img src="https://cdn-icons-png.flaticon.com/512/742/742750.png" alt="Satisfied" width="50" />
+          <small>Satisfied</small>
+        </div>
+      </div>
+      <button class="btn" id="send">Send Review</button>
+    </div>
+    
+    <div class="credit" style="font-size: 1.5rem;">
+      <span>🔙</span>
+      <a href="{{ url_for('index') }}">Home Page</a>
+  </div>
+  
+
+    <script>
+      const ratings = document.querySelectorAll('.rating');
+      const ratingsContainer = document.querySelector('.ratings-container');
+      const sendBtn = document.querySelector('#send');
+      const panel = document.querySelector('#panel');
+      let selectedRating = 'Satisfied';
+
+      ratingsContainer.addEventListener('click', (e) => {
+        if (e.target.parentNode.classList.contains('rating')) {
+          removeActive();
+          e.target.parentNode.classList.add('active');
+          selectedRating = e.target.nextElementSibling.innerHTML;
+        }
+        if (e.target.classList.contains('rating')) {
+          removeActive();
+          e.target.classList.add('active');
+          selectedRating = e.target.nextElementSibling.innerHTML;
+        }
+      });
+
+      sendBtn.addEventListener('click', (e) => {
+        panel.innerHTML = `
+          Thank You!
+          <br>
+          Feedback: ${selectedRating}
+          <br>
+          We'll use your feedback to improve our customer support
+        `;
+      });
+
+      function removeActive() {
+        for (let i = 0; i < ratings.length; i++) {
+          ratings[i].classList.remove('active');
+        }
+      }
+    </script>
+  </body>
+</html>

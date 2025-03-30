@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - AI in Healthcare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-white">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-gray-900 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <a href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="AI Logo" class="h-8 w-8"></a>
+                <a href="{{ url_for('index') }}">
+                <h1 class="text-2xl font-bold">AI-Powered Disease Detection</h1></a>
+            </div>
+            <ul class="flex space-x-6">
+                <li><a href="{{ url_for('index') }}" class="hover:text-blue-400 transition">Home</a></li>
+                <li><a href="{{ url_for('about') }}" class="hover:text-blue-400 transition">About Us</a></li>
+                <li><a href="{{ url_for('diagnosis') }}" class="hover:text-blue-400 transition">Services</a></li>
+                <li><a href="{{ url_for('feedback') }}" class="hover:text-blue-400 transition">Feedback</a></li>
+                
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="bg-black text-white py-16">
+        <div class="container mx-auto px-6 lg:px-16">
+            <h2 class="text-4xl font-extrabold text-center">Contact Us</h2>
+            <p class="text-gray-400 text-center mt-4">We'd love to hear from you. Fill out the form and we'll get back to you.</p>
+            <div class="mt-8 flex flex-col md:flex-row gap-8">
+                <div class="md:w-1/2">
+                    <p class="text-lg font-semibold">📞 +91 8294633403</p>
+                    <p class="text-lg font-semibold">📧 <a href="mailto:support@medicaldiagnostics.ai" class="text-blue-400 hover:underline">support@medicaldiagnostics.ai</a></p>
+                </div>
+                <div class="md:w-1/2 bg-gray-900 p-6 rounded-lg shadow-lg">
+                    <form>
+                        <label class="block mb-2">Full Name</label>
+                        <input type="text" class="w-full p-2 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:border-blue-400">
+                        
+                        <label class="block mt-4 mb-2">Your Email</label>
+                        <input type="email" class="w-full p-2 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:border-blue-400">
+                        
+                        <label class="block mt-4 mb-2">Your Message</label>
+                        <textarea class="w-full p-2 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:border-blue-400"></textarea>
+                        
+                        <button type="submit" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-black p-10 text-gray-400 text-center">
+        <p>&copy; 2025 AI Disease Detection. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

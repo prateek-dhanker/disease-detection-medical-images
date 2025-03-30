@@ -1,0 +1,372 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #121212;
+    color: white;
+    padding-top: 80px;  /* Prevents overlap with fixed header */
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10%;
+    background-color: black;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+
+h2 {
+    color: #0077ff;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+}
+h3 {
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+/* Logo and Title */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 40px;
+    margin-right: 10px;
+}
+
+/* Desktop Navigation */
+.desktop-nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 400;
+    transition: color 0.3s ease-in-out;
+}
+
+.desktop-nav a:hover {
+    color: #0077ff;
+}
+
+/* Menu Icon */
+.menu-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    background: black;
+    padding: 10px;
+    border-radius: 5px;
+    width: 200px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.dropdown-menu a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    transition: background 0.3s ease-in-out;
+}
+
+.dropdown-menu a:hover {
+    background: #0077ff;
+}
+
+/* Close dropdown when clicking outside */
+body:has(.dropdown-menu[style*="block"]) {
+    cursor: pointer;
+}
+
+
+/* Slider Container */
+.slider-container {
+    position: relative;
+    width: 56vw; /* Full screen width */
+    max-width: 1600px; /* Adjust as needed */
+    height: 400px; /* Increased height */
+    overflow: hidden;
+    margin: auto auto; /* Remove top/bottom margins */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid black; 
+
+}
+
+/* Slider Wrapper */
+.slider {
+    display: flex;
+    width: 100%;
+    flex-wrap: nowrap;
+    transition: transform 1.5s ease-in-out;
+}
+
+/* Each Slide */
+.slide {
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ensure images fit properly */
+.slide img {
+    width: 75%  ;
+    height: auto;
+    object-fit: contain; /* Ensures the entire image is visible without cropping */
+    display: block;
+    margin: 0 auto; /* Centers the image */
+}
+
+/* Navigation Buttons */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: blue;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px;
+    z-index: 10;
+    transition: background 0.3s;
+    border-radius: 50%;
+    background-color: black;
+}
+
+/* Left Arrow */
+.prev {
+    left: 10px;
+}
+
+/* Right Arrow */
+.next {
+    right: 10px;
+}
+
+/* Indicator Container */
+.indicator-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px 0; /* Ensure it stays at the bottom */
+}
+
+/* Indicator Circles */
+.indicator {
+    width: 12px;
+    height: 12px;
+    background: black;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Active Indicator */
+.indicator.active {
+    background: grey;
+    transform: scale(1.3);
+}
+
+/* Diagnosis container*/
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px; /* Increased gap for better spacing */
+    max-width: 1000px;
+    margin: auto;
+}
+
+.diagnosis-container {
+    background: linear-gradient(135deg, #1e1e1e, #2d2d2d);
+    border: 2px solid #333;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    transition: transform 0.3s ease-in-out;
+}
+
+.diagnosis-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+}
+
+.diagnosis-container img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.diagnosis-container h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #00ccff;
+}
+
+.diagnosis-container p {
+    font-size: 0.9em;
+    margin-bottom: 15px;
+    color: #ccc;
+}
+
+.file-upload {
+    display: block;
+    margin: 10px auto;
+}
+
+.diagnosis-button {
+    background-color: #00ccff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1em;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+.diagnosis-button:hover {
+    background-color: #0099cc;
+}
+
+
+/* Align Clear Button to the Right */
+.clear-button {
+    background-color: #ffcccc; /* Light Red */
+    color: #900; /* Dark Red Text */
+    border: 1px solid #ff6666;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+    display: inline-block;
+    margin-left: 10px; /* Creates spacing between file input and button */
+    vertical-align: middle; /* Aligns with the file input */
+}
+
+/* Hover Effect */
+.clear-button:hover {
+    background-color: #ff9999;
+    color: white;
+}
+
+/* File Upload & Clear Button Wrapper */
+.file-upload-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+
+/* Footer part */
+.footer {
+    background-color: black;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 8px 0;
+}
+
+.footer-section ul li a {
+    color: #bbb;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: white;
+}
+
+/* Contact section */
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Contact Us Button */
+.contact-btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.contact-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Copyright Styling */
+.copyright {
+    margin-top: 30px;
+    color: #bbb;
+    font-size: 14px;
+    text-align: center;
+}
