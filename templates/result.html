@@ -83,37 +83,121 @@
 
         function generatePDF(includeDetails) {
             const doc = new jsPDF();
-            doc.setFont("helvetica");
 
-            doc.text("AI-Powered Disease Detection", 70, 10);
-            doc.text("Prediction Result", 10, 20);
-            doc.text(`Prediction: ${prediction}`, 10, 30);
-            doc.text(`Confidence: ${confidence}%`, 10, 40);
+            // Load logo image from the static folder
+            const logoImg = new Image();
+            logoImg.src = "/static/images/logo.png";  // Adjust if needed
 
-            if (includeDetails) {
-                const name = document.getElementById("patientName").value;
-                const age = document.getElementById("patientAge").value;
-                const gender = document.getElementById("patientGender").value;
+            logoImg.onload = function () {
+                // Add background image
+                const backgroundImg = new Image();
+                backgroundImg.src = "https://static.vecteezy.com/system/resources/previews/022/286/075/non_2x/blank-wavy-green-background-with-white-copy-space-vector.jpg";
 
-                doc.text(`Patient Name: ${name}`, 10, 50);
-                doc.text(`Age: ${age}`, 10, 60);
-                doc.text(`Gender: ${gender}`, 10, 70);
-            }
+                backgroundImg.onload = function () {
+                    doc.addImage(backgroundImg, "PNG", 0, 0, 210, 297); // Full A4 background
 
-            const resultImg = document.getElementById("resultImage");
-            if (resultImg.src) {
-                const img = new Image();
-                img.src = resultImg.src;
-                img.onload = function () {
-                    doc.addImage(img, "PNG", 10, 80, 180, 120);
-                    doc.text("Digitally Signed by AI-Powered Disease Detection", 50, 210);
-                    doc.save("diagnosis_result.pdf");
+                    // Add logo
+                    doc.addImage(logoImg, "PNG", 25, 10, 20, 20); // Position logo
+
+                    // Title
+                    doc.setFont("helvetica", "bold");
+                    doc.setFontSize(18);
+                    doc.setTextColor(0, 0, 128);
+                    doc.text("AI-Powered Disease Detection", 50, 25);
+
+                    doc.setFontSize(12);
+                    doc.setFont("helvetica", "normal");
+                    doc.setTextColor(0, 0, 0);
+
+                    // Generate and add current date & time
+                    const currentDate = new Date().toLocaleString();
+                    doc.setFontSize(10);
+                    doc.setTextColor(255,255,255);
+                    doc.text(`Report Generated: ${currentDate}`, 120, 35);
+                    doc.setTextColor(0,0,0);
+
+                    // Patient Details
+                    let yPos = 50;
+                    if (includeDetails) {
+                        const name = document.getElementById("patientName").value;
+                        const age = document.getElementById("patientAge").value;
+                        const gender = document.getElementById("patientGender").value;
+
+                        doc.setFont("helvetica", "bold");
+                        doc.setFontSize(14);
+                        doc.text("Patient Information", 10, yPos);
+                        yPos += 10;
+
+                        doc.setFont("helvetica", "normal");
+                        doc.setFontSize(12);
+                        doc.text(`Name: ${name}`, 10, yPos);
+                        yPos += 10;
+                        doc.text(`Age: ${age}`, 10, yPos);
+                        yPos += 10;
+                        doc.text(`Gender: ${gender}`, 10, yPos);
+                        yPos += 5;
+
+                        doc.setDrawColor(100);
+                        doc.line(10, yPos, 200, yPos);
+                        yPos += 15;
+                    }
+
+                    // Prediction Results
+                    doc.setFont("helvetica", "bold");
+                    doc.setFontSize(14);
+                    doc.text("Prediction Result", 10, yPos);
+                    yPos += 10;
+
+                    doc.setFont("helvetica", "normal");
+                    doc.setFontSize(12);
+                    doc.text(`Prediction: ${prediction}`, 10, yPos);
+                    yPos += 10;
+
+                    // Dynamic confidence color
+                    const confidenceColor = confidence > 80 ? [0, 128, 0] : confidence > 50 ? [255, 165, 0] : [255, 0, 0];
+                    doc.setTextColor(...confidenceColor);
+                    doc.text(`Confidence: ${confidence}%`, 10, yPos);
+                    doc.setTextColor(0, 0, 0);
+                    yPos += 10;
+
+                    // Result Image
+                    const resultImg = document.getElementById("resultImage");
+                    if (resultImg.src) {
+                        const img = new Image();
+                        img.src = resultImg.src;
+                        img.crossOrigin = "anonymous";
+
+                        img.onload = function () {
+                            doc.addImage(img, "PNG", 10, yPos, 180, 90);
+
+                            // AI Disclaimer Note
+                            doc.setFont("helvetica", "italic");
+                            doc.setFontSize(20);
+                            doc.setTextColor(150, 0, 0); // Dark Red color
+                            doc.text(
+                                "Note: This diagnosis is AI-generated and should not replace professional medical advice. Please consult a doctor.", 
+                                10, 230, { maxWidth: 190 }
+                            );
+
+                            finalizePDF(doc);
+                        };
+                    } else {
+                        finalizePDF(doc);
+                    }
                 };
-            } else {
-                doc.text("Digitally Signed by AI-Powered Disease Detection", 50, 210);
-                doc.save("diagnosis_result.pdf");
-            }
+            };
         }
+
+        function finalizePDF(doc) {
+            // Footer
+            doc.setFont("helvetica", "italic", "bold");
+            doc.setFontSize(15);
+            doc.setTextColor(255,255,255);
+            doc.text("Digitally Signed by AI-Powered Disease Detection", 10, 270);
+
+            doc.save("diagnosis_result.pdf");
+        }
+
 
         function downloadWithoutDetails() {
             generatePDF(false);

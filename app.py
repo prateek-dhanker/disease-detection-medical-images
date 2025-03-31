@@ -176,7 +176,8 @@ def preprocess_image(img_path, img_size=(128, 128)):
     """Preprocess image for general model prediction."""
     img = cv2.imread(img_path)
     if img is None:
-        return None
+        return jsonify({"error": "Invalid image file"}), 400
+    
     img_resized = cv2.resize(img, img_size)
     img_norm = img_resized / 255.0  
     img_array = np.expand_dims(img_norm, axis=0)  
@@ -186,7 +187,7 @@ def preprocess_kidney_image(image_path, img_size=(150, 150)):
     """Preprocess image specifically for kidney stone detection."""
     image = cv2.imread(image_path)
     if image is None:
-        return None
+        return jsonify({"error": "Invalid image file"}), 400
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     image = cv2.resize(image, img_size)
     image = image / 255.0
@@ -244,6 +245,41 @@ def predict_kidney_stone(image_path):
         "plot_path": f"/static/{plot_filename}"  # Ensure unique path
     }
 
+def predict_disease(image_path,model_name,labels):
+    """Perform kidney stone detection using specific logic."""
+
+    # Process the image
+    processed_image = preprocess_image(image_path)
+    predictions = model_name.predict(processed_image)[0]
+
+    # Get predicted class and confidence
+    predicted_class = np.argmax(predictions)
+    confidence = float(predictions[predicted_class])
+    
+    # Generate unique filename for the result image
+    plot_filename = f"xray_prediction_{uuid.uuid4().hex}.png"
+    plot_path = os.path.join("static", plot_filename)
+
+    # Create figure with input image and prediction confidence
+    fig, axes = plt.subplots(1, 2, figsize=(10, 5))
+    axes[0].imshow(cv2.imread(image_path)[:, :, ::-1])  # Convert BGR to RGB
+    axes[0].axis("off")
+    axes[0].set_title("Input Image")
+
+    axes[1].bar(labels, predictions, color=["green", "red", "blue", "orange"])
+    axes[1].set_ylim([0, 1])
+    axes[1].set_ylabel("Confidence Score")
+    axes[1].set_title("Prediction Confidence")
+
+    # Save the generated plot
+    plt.savefig(plot_path)
+    plt.close()
+
+    return {
+        "prediction": labels[predicted_class],
+        "confidence": confidence,
+        "plot_path": f"/static/{plot_filename}"  # Ensure unique path
+    }
 
 @app.route("/")
 def index():
@@ -298,34 +334,26 @@ def predict():
         os.remove(file_path)
         return jsonify(result)
     
-    img_array = preprocess_image(file_path)
-    if img_array is None:
-        return jsonify({"error": "Invalid image file"}), 400
-
-    if img_type == "xray":
-        model = xray_model
-        labels = {0: "COVID-19", 1: "NORMAL", 2: "PNEUMONIA", 3: "TUBERCULOSIS"}
-    elif img_type == "mri":
-        model = mri_model
-        labels = {0: "Glioma", 1: "Meningioma", 2: "No Tumor", 3: "Pituitary Tumor"}
+    elif img_type == "xray":
+        labels = ["COVID-19", "NORMAL", "PNEUMONIA", "TUBERCULOSIS"]
+        result = predict_disease(file_path,xray_model,labels)
+        os.remove(file_path)
+        return jsonify(result)
+    
     elif img_type == "retina":
-        model = retina_model
-        labels = {0: "Cataract", 1: "Diabetic Retinopathy", 2: "Glaucoma", 3: "Normal"}
+        labels = ["Cataract", "Diabetic Retinopathy", "Glaucoma", "Normal"]
+        result = predict_disease(file_path,retina_model,labels)
+        os.remove(file_path)
+        return jsonify(result)
+    
+    elif img_type == "mri":
+        labels = ["Glioma", "Meningioma", "No Tumor", "Pituitary"]
+        result = predict_disease(file_path,mri_model,labels)
+        os.remove(file_path)
+        return jsonify(result)
+    
     else:
         return jsonify({"error": "Invalid type"}), 400
-
-    predictions = model.predict(img_array)[0]
-    predicted_class = np.argmax(predictions)
-    confidence = float(np.max(predictions))
-    plot_path = generate_plot(predictions, labels)
-
-    os.remove(file_path)
-    
-    return jsonify({
-        "prediction": labels[predicted_class],
-        "confidence": confidence,
-        "plot_path": f"/{plot_path}"
-    })
 
 if __name__ == "__main__":
     app.run(debug=True)
