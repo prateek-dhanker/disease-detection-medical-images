@@ -94,8 +94,11 @@ header {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: url('https://source.unsplash.com/1600x900/?medical,technology') no-repeat center center/cover;
     position: relative;
+    background-image: url('https://cdn.pixabay.com/photo/2025/02/07/13/00/ai-generated-9390016_1280.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .hero::before {
