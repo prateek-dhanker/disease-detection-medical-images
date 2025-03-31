@@ -79,12 +79,13 @@
             <input type="file" id="xrayUpload" class="file-upload" accept="image/*">
             <p id="xrayFileName"></p>
             <button class="clear-button" onclick="clearFile('xrayUpload')">Clear</button>
-            <button class="diagnosis-button" onclick="startDiagnosis('xrayUpload', 'xrayFileName', 1, 'loadingXray', 'resultXray', 'xrayOutput')">
+            <button class="diagnosis-button" onclick="startDiagnosis('xrayUpload', 'xrayFileName', 1, 'loadingXray', 'resultXray', 'xrayOutput', 'xrayshowResultBtn')">
                 Start Analysis
             </button>
             <p id="loadingXray" class="loading-status" style="display: none;">Processing...</p>
             <p id="resultXray" class="diagnosis-result" style="display: none;"></p>
             <img id="xrayOutput" class="result-image" style="display:none;">
+            <button id="xrayshowResultBtn" style="display: none;">Show Result</button>
         </div>
     
         <!-- MRI Diagnosis -->
@@ -95,12 +96,13 @@
             <input type="file" id="mriUpload" class="file-upload" accept="image/*">
             <p id="mriFileName"></p>
             <button class="clear-button" onclick="clearFile('mriUpload')">Clear</button>
-            <button class="diagnosis-button" onclick="startDiagnosis('mriUpload', 'mriFileName', 2, 'loadingMri', 'resultMri', 'mriOutput')">
+            <button class="diagnosis-button" onclick="startDiagnosis('mriUpload', 'mriFileName', 2, 'loadingMri', 'resultMri', 'mriOutput', 'mrishowResultBtn')">
                 Start Analysis
             </button>
             <p id="loadingMri" class="loading-status" style="display: none;">Processing...</p>
             <p id="resultMri" class="diagnosis-result" style="display: none;"></p>
             <img id="mriOutput" class="result-image" style="display:none;">
+            <button id="mrishowResultBtn" style="display: none;">Show Result</button>
         </div>
 
         <!-- Retina Diagnosis -->
@@ -111,12 +113,13 @@
             <input type="file" id="retinaUpload" class="file-upload" accept="image/*">
             <p id="retinaFileName"></p>
             <button class="clear-button" onclick="clearFile('retinaUpload')">Clear</button>
-            <button class="diagnosis-button" onclick="startDiagnosis('retinaUpload', 'retinaFileName', 3, 'loadingretina', 'resultretina', 'retinaOutput')">
+            <button class="diagnosis-button" onclick="startDiagnosis('retinaUpload', 'retinaFileName', 3, 'loadingretina', 'resultretina', 'retinaOutput', 'retinashowResultBtn')">
                 Start Analysis
             </button>
             <p id="loadingretina" class="loading-status" style="display: none;">Processing...</p>
             <p id="resultretina" class="diagnosis-result" style="display: none;"></p>
             <img id="retinaOutput" class="result-image" style="display:none;">
+            <button id="retinashowResultBtn" style="display: none;">Show Result</button>
         </div>
 
         <!-- Kidney Stone Diagnosis -->
@@ -127,12 +130,13 @@
             <input type="file" id="kidneyUpload" class="file-upload" accept="image/*">
             <p id="kidneyFileName"></p>
             <button class="clear-button" onclick="clearFile('kidneyUpload')">Clear</button>
-            <button class="diagnosis-button" onclick="startDiagnosis('kidneyUpload', 'kidneyFileName', 4, 'loadingkidney', 'resultkidney', 'kidneyOutput')">
+            <button class="diagnosis-button" onclick="startDiagnosis('kidneyUpload', 'kidneyFileName', 4, 'loadingkidney', 'resultkidney', 'kidneyOutput', 'kidneyshowResultBtn')">
                 Start Analysis
             </button>
             <p id="loadingkidney" class="loading-status" style="display: none;">Processing...</p>
             <p id="resultkidney" class="diagnosis-result" style="display: none;"></p>
             <img id="kidneyOutput" class="result-image" style="display:none;">
+            <button id="kidneyshowResultBtn" style="display: none;">Show Result</button>
         </div>
 
     </div>

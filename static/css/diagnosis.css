@@ -295,6 +295,76 @@ body:has(.dropdown-menu[style*="block"]) {
     align-items: center;
 }
 
+/* show result */
+#xrayshowResultBtn {
+    display: none;
+    background-color:#00ccff;
+    color: black;
+    padding: 9px 18px;
+    border: none;
+    border-radius: 4px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#xrayshowResultBtn:hover {
+    background-color: blue;
+    transform: scale(1.05);
+}
+
+#mrishowResultBtn {
+    display: none;
+    background-color:#00ccff;
+    color: black;
+    padding: 9px 18px;
+    border: none;
+    border-radius: 4px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#mrishowResultBtn:hover {
+    background-color: blue;
+    transform: scale(1.05);
+}
+
+#retinashowResultBtn {
+    display: none;
+    background-color: #00ccff;
+    color: black;
+    padding: 9px 18px;
+    border: none;
+    border-radius: 4px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#retinashowResultBtn:hover {
+    background-color: blue;
+    transform: scale(1.05);
+}
+
+#kidneyshowResultBtn {
+    display: none;
+    background-color: #00ccff;
+    color: black;
+    padding: 9px 18px;
+    border: none;
+    border-radius: 4px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#kidneyshowResultBtn:hover {
+    background-color: blue;
+    transform: scale(1.05);
+}
+
+
 
 /* Footer part */
 .footer {

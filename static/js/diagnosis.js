@@ -55,69 +55,14 @@ document.addEventListener("DOMContentLoaded", function () {
 function clearFile(inputId) {
     document.getElementById(inputId).value = "";
 }
-
-
-
-// frontend and backend communication
-// function startDiagnosis(inputId, fileNameId, type, loadingId, resultId, outputId) {
-    // let fileInput = document.getElementById(inputId);
-    // let fileNameDisplay = document.getElementById(fileNameId);
-    // let loadingText = document.getElementById(loadingId);
-    // let resultText = document.getElementById(resultId);
-    // let outputImage = document.getElementById(outputId);
-// 
-    // Ensure a file is selected
-    // if (!fileInput.files.length) {
-        // alert("Please upload an image file first.");
-        // return;
-    // }
-// 
-    // let file = fileInput.files[0];
-    // let formData = new FormData();
-    // formData.append("file", file);
-    // 
-    // Determine image type (1 = X-ray, 2 = MRI)
-    // formData.append("type", type === 1 ? "xray" : "mri");
-// 
-    // Update UI
-    // fileNameDisplay.textContent = "File: " + file.name;
-    // loadingText.style.display = "block";
-    // resultText.style.display = "none";
-    // outputImage.style.display = "none";
-// 
-    // Send file to Flask API
-    // fetch("/predict", {
-        // method: "POST",
-        // body: formData
-    // })
-    // .then(response => response.json())
-    // .then(data => {
-        // loadingText.style.display = "none"; // Hide loading
-        // if (data.error) {
-            // resultText.textContent = "Error: " + data.error;
-        // } else {
-            // resultText.innerHTML = `Prediction: <strong>${data.prediction}</strong><br>Confidence: <strong>${(data.confidence * 100).toFixed(2)}%</strong>`;
-            // outputImage.src = data.plot_path; // Show probability plot
-            // outputImage.style.display = "block";
-        // }
-        // resultText.style.display = "block";
-    // })
-    // .catch(error => {
-        // console.error("Error:", error);
-        // resultText.textContent = "Error occurred. Please try again.";
-        // resultText.style.display = "block";
-        // loadingText.style.display = "none";
-    // });
-// }
-
-
-// frontend and backend communication( for 4 diseases)
-function startDiagnosis(inputId, fileNameId, type, loadingId, resultId, outputId) {
+// frontend and backend communication (for 4 diseases)
+function startDiagnosis(inputId, fileNameId, type, loadingId, resultId, outputId, showResultId) {
     let fileInput = document.getElementById(inputId);
     let fileNameDisplay = document.getElementById(fileNameId);
     let loadingText = document.getElementById(loadingId);
     let resultText = document.getElementById(resultId);
     let outputImage = document.getElementById(outputId);
+    let showResultBtn = document.getElementById(showResultId); // Ensure this targets the right button
 
     // Ensure a file is selected
     if (!fileInput.files.length) {
@@ -129,7 +74,7 @@ function startDiagnosis(inputId, fileNameId, type, loadingId, resultId, outputId
     let formData = new FormData();
     formData.append("file", file);
     
-    // Determine model type (Corrected)
+    // Determine model type
     let modelType = "";
     switch (type) {
         case 1:
@@ -155,6 +100,7 @@ function startDiagnosis(inputId, fileNameId, type, loadingId, resultId, outputId
     loadingText.style.display = "block";
     resultText.style.display = "none";
     outputImage.style.display = "none";
+    showResultBtn.style.display = "none"; // Hide button initially
 
     // Send file to Flask API
     fetch("/predict", {
@@ -166,12 +112,16 @@ function startDiagnosis(inputId, fileNameId, type, loadingId, resultId, outputId
         loadingText.style.display = "none"; // Hide loading
         if (data.error) {
             resultText.textContent = "Error: " + data.error;
+            resultText.style.display = "block";
         } else {
-            resultText.innerHTML = `Prediction: <strong>${data.prediction}</strong><br>Confidence: <strong>${(data.confidence * 100).toFixed(2)}%</strong>`;
-            outputImage.src = data.plot_path; // Show probability plot
-            outputImage.style.display = "block";
+            // Store result in sessionStorage for the next page
+            sessionStorage.setItem("prediction", data.prediction);
+            sessionStorage.setItem("confidence", (data.confidence * 100).toFixed(2));
+            sessionStorage.setItem("plot_path", data.plot_path);
+
+            // Ensure the correct Show Result button appears
+            showResultBtn.style.display = "block";
         }
-        resultText.style.display = "block";
     })
     .catch(error => {
         console.error("Error:", error);
@@ -179,4 +129,12 @@ function startDiagnosis(inputId, fileNameId, type, loadingId, resultId, outputId
         resultText.style.display = "block";
         loadingText.style.display = "none";
     });
+
+    // Button click event to open result page
+    showResultBtn.onclick = function() {
+        window.location.href = "/result";  // Redirect to Flask route
+    };
 }
+
+
+

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body class="bg-black text-white flex flex-col items-center p-6"> 
+    <div class="bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-2xl text-center">
+        <a href="{{ url_for('index') }}">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="AI Logo" class="h-8 w-8"></a>
+        <a href="{{ url_for('index') }}">
+        <h1 class="text-3xl font-bold text-blue-400 mb-4">AI-Powered Disease Detection</h1></a>
+        
+        <!-- Patient Details Section -->
+        <div id="patientDetails" class="mb-4 hidden">
+            <h2 class="text-xl font-semibold">Patient Details</h2>
+            <p><strong>Name:</strong> <span id="patientNameText"></span></p>
+            <p><strong>Age:</strong> <span id="patientAgeText"></span></p>
+            <p><strong>Gender:</strong> <span id="patientGenderText"></span></p>
+        </div>
+        
+        <!-- Prediction Result -->
+        <div class="mb-4">
+            <h2 class="text-xl font-semibold">Prediction Result</h2>
+            <p id="predictionText" class="bg-gray-700 p-3 rounded-md"></p>
+        </div>
+        
+        <!-- Output Image -->
+        <div class="mb-4">
+            <h2 class="text-xl font-semibold">Output Image</h2>
+            <img id="resultImage" class="rounded-lg shadow-lg w-full max-w-md mx-auto" src="" alt="Result Image">
+        </div>
+        
+        <!-- Signature -->
+        <div class="mt-6 text-gray-400 italic">Digitally Signed by AI-Powered Disease Detection</div>
+        
+        <!-- Buttons -->
+        <div class="mt-6 flex flex-col space-y-4">
+            <button onclick="downloadWithoutDetails()" class="bg-blue-500 hover:bg-blue-600 text-black font-bold py-2 px-6 rounded">Download Without Details</button>
+            <button onclick="showPopup()" class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-6 rounded">Download With Patient Details</button>
+            <button onclick="window.history.back()" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-6 rounded">Back</button>
+        </div>
+    </div>
+
+    <!-- Patient Details Popup -->
+    <div id="patientPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg w-96 text-center">
+            <h2 class="text-xl font-semibold mb-4">Enter Patient Details</h2>
+            <input id="patientName" type="text" placeholder="Name" class="w-full p-2 mb-2 rounded text-black">
+            <input id="patientAge" type="number" placeholder="Age" class="w-full p-2 mb-2 rounded text-black">
+            <select id="patientGender" class="w-full p-2 mb-4 rounded text-black">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+            <button onclick="downloadWithDetails()" class="bg-blue-500 hover:bg-blue-600 text-black font-bold py-2 px-6 rounded">Download</button>
+            <button onclick="hidePopup()" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-6 rounded mt-2">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        const { jsPDF } = window.jspdf;
+        const prediction = sessionStorage.getItem("prediction");
+        const confidence = sessionStorage.getItem("confidence");
+        const plotPath = sessionStorage.getItem("plot_path");
+
+        if (prediction && confidence) {
+            document.getElementById("predictionText").innerHTML = `<strong>Prediction:</strong> ${prediction} <br> <strong>Confidence:</strong> ${confidence}%`;
+        }
+        if (plotPath) {
+            document.getElementById("resultImage").src = plotPath;
+        }
+
+        function showPopup() {
+            document.getElementById("patientPopup").style.display = "flex";
+        }
+        function hidePopup() {
+            document.getElementById("patientPopup").style.display = "none";
+        }
+
+        function generatePDF(includeDetails) {
+            const doc = new jsPDF();
+            doc.setFont("helvetica");
+
+            doc.text("AI-Powered Disease Detection", 70, 10);
+            doc.text("Prediction Result", 10, 20);
+            doc.text(`Prediction: ${prediction}`, 10, 30);
+            doc.text(`Confidence: ${confidence}%`, 10, 40);
+
+            if (includeDetails) {
+                const name = document.getElementById("patientName").value;
+                const age = document.getElementById("patientAge").value;
+                const gender = document.getElementById("patientGender").value;
+
+                doc.text(`Patient Name: ${name}`, 10, 50);
+                doc.text(`Age: ${age}`, 10, 60);
+                doc.text(`Gender: ${gender}`, 10, 70);
+            }
+
+            const resultImg = document.getElementById("resultImage");
+            if (resultImg.src) {
+                const img = new Image();
+                img.src = resultImg.src;
+                img.onload = function () {
+                    doc.addImage(img, "PNG", 10, 80, 180, 120);
+                    doc.text("Digitally Signed by AI-Powered Disease Detection", 50, 210);
+                    doc.save("diagnosis_result.pdf");
+                };
+            } else {
+                doc.text("Digitally Signed by AI-Powered Disease Detection", 50, 210);
+                doc.save("diagnosis_result.pdf");
+            }
+        }
+
+        function downloadWithoutDetails() {
+            generatePDF(false);
+        }
+        function downloadWithDetails() {
+            generatePDF(true);
+            hidePopup();
+        }
+    </script>
+</body>
+</html>

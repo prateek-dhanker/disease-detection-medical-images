@@ -273,7 +273,9 @@ def feedback():
 def submit_feedback():
     return render_template("feedback_reaction.html")
 
-
+@app.route("/result")
+def result_page():
+    return render_template("result.html")
 
 @app.route("/predict", methods=["POST"])
 def predict():
