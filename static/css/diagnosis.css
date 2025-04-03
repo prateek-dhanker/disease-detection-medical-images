@@ -382,7 +382,7 @@ body:has(.dropdown-menu[style*="block"]) {
 .main-container {
     width: 80%;
     margin: auto;
-    background-color: #0d1117;
+    background-color: #121212;
     color: white;
     font-family: Arial, sans-serif;
     text-align: center;
@@ -524,7 +524,7 @@ body:has(.dropdown-menu[style*="block"]) {
     justify-content: center;
     align-items: center;
     width: 100%;
-    background-color: #000; /* Black background */
+    background-color: #121212; /* Black background */
     padding: 40px 20px;
 }
 
