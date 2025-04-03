@@ -11,7 +11,8 @@
 body {
     background-color: #121212;
     color: white;
-    padding-top: 80px;  /* Prevents overlap with fixed header */
+    padding-top: 80px;
+    /* Prevents overlap with fixed header */
 }
 
 /* Header */
@@ -35,6 +36,7 @@ h2 {
     text-align: center;
     margin-bottom: 30px;
 }
+
 h3 {
     color: white;
     font-size: 2rem;
@@ -115,15 +117,19 @@ body:has(.dropdown-menu[style*="block"]) {
 /* Slider Container */
 .slider-container {
     position: relative;
-    width: 56vw; /* Full screen width */
-    max-width: 1600px; /* Adjust as needed */
-    height: 400px; /* Increased height */
+    width: 56vw;
+    /* Full screen width */
+    max-width: 1600px;
+    /* Adjust as needed */
+    height: 400px;
+    /* Increased height */
     overflow: hidden;
-    margin: auto auto; /* Remove top/bottom margins */
+    margin: auto auto;
+    /* Remove top/bottom margins */
     display: flex;
     align-items: center;
     justify-content: center;
-    border-top: 1px solid black; 
+    border-top: 1px solid black;
 
 }
 
@@ -146,11 +152,13 @@ body:has(.dropdown-menu[style*="block"]) {
 
 /* Ensure images fit properly */
 .slide img {
-    width: 75%  ;
+    width: 75%;
     height: auto;
-    object-fit: contain; /* Ensures the entire image is visible without cropping */
+    object-fit: contain;
+    /* Ensures the entire image is visible without cropping */
     display: block;
-    margin: 0 auto; /* Centers the image */
+    margin: 0 auto;
+    /* Centers the image */
 }
 
 /* Navigation Buttons */
@@ -185,7 +193,8 @@ body:has(.dropdown-menu[style*="block"]) {
     display: flex;
     justify-content: center;
     gap: 10px;
-    padding: 20px 0; /* Ensure it stays at the bottom */
+    padding: 20px 0;
+    /* Ensure it stays at the bottom */
 }
 
 /* Indicator Circles */
@@ -208,7 +217,8 @@ body:has(.dropdown-menu[style*="block"]) {
 .container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px; /* Increased gap for better spacing */
+    gap: 30px;
+    /* Increased gap for better spacing */
     max-width: 1000px;
     margin: auto;
 }
@@ -270,8 +280,10 @@ body:has(.dropdown-menu[style*="block"]) {
 
 /* Align Clear Button to the Right */
 .clear-button {
-    background-color: #ffcccc; /* Light Red */
-    color: #900; /* Dark Red Text */
+    background-color: #ffcccc;
+    /* Light Red */
+    color: #900;
+    /* Dark Red Text */
     border: 1px solid #ff6666;
     padding: 8px 12px;
     border-radius: 5px;
@@ -279,8 +291,10 @@ body:has(.dropdown-menu[style*="block"]) {
     transition: 0.3s;
     font-weight: bold;
     display: inline-block;
-    margin-left: 10px; /* Creates spacing between file input and button */
-    vertical-align: middle; /* Aligns with the file input */
+    margin-left: 10px;
+    /* Creates spacing between file input and button */
+    vertical-align: middle;
+    /* Aligns with the file input */
 }
 
 /* Hover Effect */
@@ -298,7 +312,7 @@ body:has(.dropdown-menu[style*="block"]) {
 /* show result */
 #xrayshowResultBtn {
     display: none;
-    background-color:#00ccff;
+    background-color: #00ccff;
     color: black;
     padding: 9px 18px;
     border: none;
@@ -315,7 +329,7 @@ body:has(.dropdown-menu[style*="block"]) {
 
 #mrishowResultBtn {
     display: none;
-    background-color:#00ccff;
+    background-color: #00ccff;
     color: black;
     padding: 9px 18px;
     border: none;
@@ -364,6 +378,184 @@ body:has(.dropdown-menu[style*="block"]) {
     transform: scale(1.05);
 }
 
+/* diseses info */
+.main-container {
+    width: 80%;
+    margin: auto;
+    background-color: #0d1117;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.header-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #4aa3ff;
+}
+
+.info-button {
+    background-color: #4aa3ff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.info-button:hover {
+    background-color: #007bff;
+}
+
+.disease-section {
+    display: none;
+    margin-top: 20px;
+}
+
+.category-section {
+    margin-bottom: 20px;
+}
+
+.category-title {
+    color: #4aa3ff;
+    margin-bottom: 10px;
+}
+
+.disease-listing {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.disease-box {
+    background-color: #161b22;
+    padding: 20px;
+    border-radius: 8px;
+    width: 200px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.disease-box:hover {
+    background-color: #22262e;
+}
+
+.disease-image {
+    width: 80px;
+    height: 80px;
+}
+
+/* Pop-up Overlay */
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+/* Pop-up Box */
+.popup-box {
+    background-color: #1a1a1a;
+    padding: 20px;
+    width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 153, 255, 0.8);
+    text-align: center;
+}
+
+/* Pop-up Heading */
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#popupTitle {
+    font-size: 22px;
+    font-weight: bold;
+    color: #0099ff;
+    text-align: center;
+    flex-grow: 1;
+}
+
+/* Close Button */
+.close-popup {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+.close-popup:hover {
+    color: red;
+}
+
+/* Pop-up Content */
+.popup-content {
+    margin-top: 10px;
+    text-align: left;
+}
+
+.popup-content h3 {
+    color: #0099ff;
+    text-align: center;
+}
+
+.popup-content p,
+.popup-content li {
+    font-size: 14px;
+}
+
+.popup-content ul {
+    padding-left: 20px;
+}
+
+/* Important Notice Section */
+.important-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #000; /* Black background */
+    padding: 40px 20px;
+}
+
+.important-content {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    width: 800px;
+    box-shadow: 0px 0px 15px rgba(0, 188, 212, 0.3);
+}
+
+.important-content h3 {
+    color: #00bcd4;
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+
+.important-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 5px 0;
+}
+
+.important-content p:last-child {
+    font-size: 14px;
+    color: #b0b0b0;
+    margin-top: 10px;
+}
 
 
 /* Footer part */

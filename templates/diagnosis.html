@@ -74,6 +74,7 @@
         <span class="indicator" onclick="goToSlide(9)"></span>
         <span class="indicator" onclick="goToSlide(10)"></span>
     </div>
+    <br>
     <h3>Upload your medical scan, and our AI will analyze it for potential diseases.</h3>
 
     <div id="diagnosis-section" class="container">
@@ -147,8 +148,133 @@
             <p id="resultkidney" class="diagnosis-result" style="display: none;"></p>
             <img id="kidneyOutput" class="result-image" style="display:none;">
             <button id="kidneyshowResultBtn" style="display: none;">Show Result</button>
-        </div>        
+        </div>
     </div>
+    <br>
+    <section class="important-section">
+        <div class="important-content">
+            <h3>Important Information</h3>
+            <p>
+                This AI-powered diagnosis system is designed to assist medical professionals, not replace them.
+                Always consult with a healthcare provider for a definitive diagnosis and treatment plan.
+            </p>
+            <p>
+                The AI models are trained on extensive medical image datasets and continuously improved for accuracy.
+            </p>
+        </div>
+    </section>
+    
+    <br>
+    <!-- diseses info -->
+    <div class="main-container">
+        <div class="header-title">Disease Information</div>
+        <p>Click below to know more about different diseases detected by AI.</p>
+        <button class="info-button" onclick="toggleDiseaseSection()">Know More</button>
+
+        <div id="diseaseListSection" class="disease-section">
+
+            <!-- X-ray Test -->
+            <div class="category-section">
+                <h2 class="category-title">X-ray Test</h2>
+                <div class="disease-listing">
+                    <div class="disease-box" onclick="showPopup('COVID-19')">
+                        <img class="disease-image" src="{{ url_for('static', filename='images/x-ray.png') }}"
+                            alt="COVID-19">
+                        <p>COVID-19</p>
+                    </div>
+                    <div class="disease-box" onclick="showPopup('Pneumonia')">
+                        <img class="disease-image" src="{{ url_for('static', filename='images/x-ray.png') }}"
+                            alt="Pneumonia">
+                        <p>Pneumonia</p>
+                    </div>
+                    <div class="disease-box" onclick="showPopup('Tuberculosis')">
+                        <img class="disease-image" src="{{ url_for('static', filename='images/x-ray.png') }}"
+                            alt="Tuberculosis">
+                        <p>Tuberculosis</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Retina Test -->
+            <div class="category-section">
+                <h2 class="category-title">Retina Test</h2>
+                <div class="disease-listing">
+                    <div class="disease-box" onclick="showPopup('Cataract')">
+                        <img class="disease-image" src="{{ url_for('static', filename='images/icons8-retina-64.png') }}"
+                            alt="Cataract">
+                        <p>Cataract</p>
+                    </div>
+                    <div class="disease-box" onclick="showPopup('Diabetic Retinopathy')">
+                        <img class="disease-image" src="{{ url_for('static', filename='images/icons8-retina-64.png') }}"
+                            alt="Diabetic Retinopathy">
+                        <p>Diabetic Retinopathy</p>
+                    </div>
+                    <div class="disease-box" onclick="showPopup('Glaucoma')">
+                        <img class="disease-image" src="{{ url_for('static', filename='images/icons8-retina-64.png') }}"
+                            alt="Glaucoma">
+                        <p>Glaucoma</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- MRI Test -->
+            <div class="category-section">
+                <h2 class="category-title">MRI Test</h2>
+                <div class="disease-listing">
+                    <div class="disease-box" onclick="showPopup('Glioma')">
+                        <img class="disease-image" src="{{ url_for('static', filename='images/mri_logo.jpg') }}"
+                            alt="Glioma">
+                        <p>Glioma</p>
+                    </div>
+                    <div class="disease-box" onclick="showPopup('Meningioma')">
+                        <img class="disease-image" src="{{ url_for('static', filename='images/mri_logo.jpg') }}"
+                            alt="Meningioma">
+                        <p>Meningioma</p>
+                    </div>
+                    <div class="disease-box" onclick="showPopup('Pituitary')">
+                        <img class="disease-image" src="{{ url_for('static', filename='images/mri_logo.jpg') }}"
+                            alt="Pituitary">
+                        <p>Pituitary</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Kidney Test -->
+            <div class="category-section">
+                <h2 class="category-title">Kidney Test</h2>
+                <div class="disease-listing">
+                    <div class="disease-box" onclick="showPopup('Kidney Stones')">
+                        <img class="disease-image" src="{{ url_for('static', filename='images/icons8-kidney-48.png') }}"
+                            alt="Kidney Stones">
+                        <p>Kidney Stones</p>
+                    </div>
+                    <div class="disease-box" onclick="showPopup('Kidney Infection')">
+                        <img class="disease-image" src="{{ url_for('static', filename='images/icons8-kidney-48.png') }}"
+                            alt="Kidney Infection">
+                        <p>Kidney Infection</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Pop-up Window -->
+    <div id="diseasePopup" class="popup-overlay">
+        <div class="popup-box">
+            <!-- Pop-up Header -->
+            <div class="popup-header">
+                <button class="close-popup" onclick="closePopup()">&times;</button>
+            </div>
+
+            <!-- Pop-up Content -->
+            <div id="popupContent" class="popup-content"></div>
+        </div>
+    </div>
+
+
 
     <footer id="contact" class="footer">
         <div class="footer-container">
