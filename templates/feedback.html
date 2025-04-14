@@ -1,12 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback Form</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <style>
+        /* WhatsApp Button */
+        #whatsapp-chat {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        #whatsapp-chat img {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
 </head>
+
 <body class="bg-black text-white min-h-screen" style="background-color: black;">
 
     <!-- Navigation Bar -->
@@ -15,8 +31,9 @@
             <div class="flex items-center space-x-2">
                 <a href="{{ url_for('index') }}">
                     <img src="{{ url_for('static', filename='images/logo.png') }}" alt="AI Logo" class="h-8 w-8"></a>
-                    <a href="{{ url_for('index') }}">
-                    <h1 class="text-2xl font-bold">AI-Powered Disease Detection</h1></a>
+                <a href="{{ url_for('index') }}">
+                    <h1 class="text-2xl font-bold">AI-Powered Disease Detection</h1>
+                </a>
             </div>
             <ul class="flex space-x-6">
                 <li><a href="{{ url_for('index') }}" class="hover:text-blue-400 transition">Home</a></li>
@@ -35,13 +52,13 @@
             <form action="{{ url_for('submit_feedback') }}" method="post">
                 <div class="mb-4">
                     <label for="name" class="block text-lg mb-1">Full Name</label>
-                    <input type="text" id="name" name="name" required 
+                    <input type="text" id="name" name="name" required
                         class="w-full p-3 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:border-blue-400">
                 </div>
 
                 <div class="mb-4">
                     <label for="email" class="block text-lg mb-1">Email</label>
-                    <input type="email" id="email" name="email" required 
+                    <input type="email" id="email" name="email" required
                         class="w-full p-3 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:border-blue-400">
                 </div>
 
@@ -56,13 +73,20 @@
                     <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
                 </div>
 
-                <button type="submit" 
+                <button type="submit"
                     class="block text-center w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded text-lg transition">
                     Submit Feedback
                 </button>
             </form>
         </div>
     </div>
+    <!-- WhatsApp Chat Button -->
+    <div id="whatsapp-chat">
+        <a href="https://wa.me/+917982460774" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/220/220236.png" alt="Chat with us">
+        </a>
+    </div>
 
 </body>
+
 </html>

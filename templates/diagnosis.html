@@ -149,7 +149,27 @@
             <img id="kidneyOutput" class="result-image" style="display:none;">
             <button id="kidneyshowResultBtn" style="display: none;">Show Result</button>
         </div>
+
+        <!-- Bone Fracture Diagnosis -->
+        <div class="diagnosis-container">
+            <img src="{{ url_for('static', filename='images/bone.jpg') }}" alt="Bone Fracture Analysis">
+            <h2>Bone Fracture Analysis</h2>
+            <p>Upload a Bone X-ray scan for AI-powered bone fracture analysis.</p>
+            <input type="file" id="boneUpload" class="file-upload" accept="image/*">
+            <p id="boneFileName"></p>
+            <button class="clear-button" onclick="clearFile('boneUpload')">Clear</button>
+            <button class="diagnosis-button"
+                onclick="startDiagnosis('boneUpload', 'boneFileName', 5, 'loadingbone', 'resultbone', 'boneOutput', 'boneshowResultBtn')">
+                Start Analysis
+            </button>
+            <p id="loadingbone" class="loading-status" style="display: none;">Processing...</p>
+            <p id="resultbone" class="diagnosis-result" style="display: none;"></p>
+            <img id="boneOutput" class="result-image" style="display:none;">
+            <button id="boneshowResultBtn" style="display: none;">Show Result</button>
+        </div>
     </div>
+
+
     <br>
     <section class="important-section">
         <div class="important-content">
@@ -163,7 +183,7 @@
             </p>
         </div>
     </section>
-    
+
     <br>
     <!-- diseses info -->
     <div class="main-container">
@@ -258,8 +278,22 @@
                 </div>
             </div>
 
+            <!-- Bone Test -->
+            <div class="category-section">
+                <h2 class="category-title">Bone Fractured Detection</h2>
+                <div class="disease-listing">
+                    <div class="disease-box" onclick="showPopup('Bone Fracture')">
+                        <img class="disease-image" src="{{ url_for('static', filename='images/bone.jpg') }}" alt="bone">
+                        <p>Bone Fracture</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
+
+
+
 
     <!-- Pop-up Window -->
     <div id="diseasePopup" class="popup-overlay">

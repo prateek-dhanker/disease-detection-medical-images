@@ -89,6 +89,9 @@ function startDiagnosis(inputId, fileNameId, type, loadingId, resultId, outputId
         case 4:
             modelType = "kidney_stone";
             break;
+        case 5:
+            modelType = "bone";
+            break;
         default:
             alert("Invalid type specified.");
             return;
@@ -135,6 +138,7 @@ function startDiagnosis(inputId, fileNameId, type, loadingId, resultId, outputId
         window.location.href = "/result";  // Redirect to Flask route
     };
 }
+
 
 // Disease Information Database
 const diseaseData = {
@@ -280,6 +284,17 @@ const diseaseData = {
             "Stage 3: Large tumor pressing on optic nerves, leading to vision loss"
         ],
         emergencyMedicine: ["Hormone therapy", "Surgery", "Radiation therapy"]
+    },
+    "Bone Fracture": {
+        title: "Bone Fracture",
+        causes: "A break or crack in the bone, usually caused by trauma, overuse, or conditions like osteoporosis.",
+        symptoms: ["Pain at the fracture site", "Swelling and bruising", "Deformity in the affected area", "Limited movement or function"],
+        stages: [
+            "Stage 1: Hairline or small fracture with minimal swelling",
+            "Stage 2: Fracture with noticeable pain and swelling, may require immobilization",
+            "Stage 3: Severe fracture with bone displacement, requiring surgery or complex treatments"
+        ],
+        emergencyMedicine: ["Pain management", "Casting or splinting", "Surgical intervention", "Physical therapy for rehabilitation"]
     }
 };
 
