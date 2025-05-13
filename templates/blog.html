@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI in Healthcare - Research & Blogs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* WhatsApp Button */
+        #whatsapp-chat {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        #whatsapp-chat img {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+
+<body class="bg-black text-white">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-gray-900 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <a href="{{ url_for('index') }}">
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="AI Logo" class="h-8 w-8"></a>
+                <a href="{{ url_for('index') }}">
+                    <h1 class="text-2xl font-bold">AI-Powered Disease Detection</h1>
+                </a>
+            </div>
+            <ul class="flex space-x-6">
+                <li><a href="{{ url_for('index') }}" class="hover:text-blue-400 transition">Home</a></li>
+                <li><a href="{{ url_for('about') }}" class="hover:text-blue-400 transition">About Us</a></li>
+                <li><a href="{{ url_for('diagnosis') }}" class="hover:text-blue-400 transition">Services</a></li>
+                <li><a href="{{ url_for('contact_us') }}" class="hover:text-blue-400 transition">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="text-center py-6 bg-gray-900">
+        <h1 class="text-3xl font-bold">Latest Research & Blogs on AI in Healthcare</h1>
+    </header>
+
+    <!-- Blog & Research Papers Container -->
+    <main class="container mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- Blog & Research Posts (Dynamically Inserted) -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-center py-4 mt-10">
+        <p>&copy; 2025 AI Disease Detection. All Rights Reserved.</p>
+    </footer>
+
+    <!-- WhatsApp Chat Button -->
+    <div id="whatsapp-chat">
+        <a href="https://wa.me/+917982460774" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/220/220236.png" alt="Chat with us">
+        </a>
+    </div>
+
+    <script>
+        const posts = [
+            {
+                title: "AI in Early Disease Detection",
+                image: "{{ url_for('static', filename='images/blog1.jpg') }}",
+                description: "How AI is transforming disease detection and saving lives through advanced algorithms.",
+                research: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7603451/",
+                blog: "https://www.google.com/search?q=AI+in+Early+Disease+Detection&sca_esv=b2b9302155725f5a&sxsrf=AHTn8zpEYzeH1aVTWJPQAhgErcKYji4fhw%3A1742847205603&ei=5bzhZ8LRJOGcseMP0ra92QQ&ved=0ahUKEwiC2Nnkw6OMAxVhTmwGHVJbL0sQ4dUDCBA&uact=5&oq=AI+in+Early+Disease+Detection&gs_lp=Egxnd3Mtd2l6LXNlcnAiHUFJIGluIEVhcmx5IERpc2Vhc2UgRGV0ZWN0aW9uMgsQABiABBiRAhiKBTIGEAAYFhgeMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeMgsQABiABBiGAxiKBTILEAAYgAQYhgMYigUyCxAAGIAEGIYDGIoFMgsQABiABBiGAxiKBTILEAAYgAQYhgMYigVI2wZQAFiNA3ABeAGQAQCYAZwCoAGcAqoBAzItMbgBA8gBAPgBAfgBApgCAqACuAKoAhTCAgcQIxgnGOoCwgINEC4Y0QMYxwEYJxjqAsICExAAGIAEGEMYtAIYigUY6gLYAQGYAw_xBV7lLvuS6a8GugYGCAEQARgBkgcFMS4wLjGgB_YHsgcDMi0xuAepAg&sclient=gws-wiz-serp"
+            },
+            {
+                title: "Machine Learning for Cancer Diagnosis",
+                image: "{{ url_for('static', filename='images/blog2.jpg') }}",
+                description: "Exploring how ML algorithms assist doctors in diagnosing cancer with high accuracy.",
+                research: "https://arxiv.org/abs/2206.02531",
+                blog: "https://www.google.com/search?q=Machine+Learning+for+Cancer+Diagnosis&sca_esv=b2b9302155725f5a&sxsrf=AHTn8zoWRhh6WzrBSr6cXqp6GiQPUgailA%3A1742847249792&ei=Eb3hZ_uGMMjC1e8PsoeuCQ&ved=0ahUKEwi70-L5w6OMAxVIYfUHHbKDKwEQ4dUDCBA&uact=5&oq=Machine+Learning+for+Cancer+Diagnosis&gs_lp=Egxnd3Mtd2l6LXNlcnAiJU1hY2hpbmUgTGVhcm5pbmcgZm9yIENhbmNlciBEaWFnbm9zaXMyBhAAGBYYHjIGEAAYFhgeMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeMgYQABgWGB4yBhAAGBYYHkjTC1DgB1jgB3ABeAGQAQCYAbUBoAG1AaoBAzAuMbgBA8gBAPgBAfgBApgCAqAC2gGoAhTCAgcQIxgnGOoCwgINEC4Y0QMYxwEYJxjqAsICFBAAGIAEGJECGLQCGIoFGOoC2AEBwgIUEAAYgAQY4wQYtAIY6QQY6gLYAQGYAxjxBYBJyQYKkjiGugYGCAEQARgBkgcDMS4xoAfqCbIHAzAuMbgHwgE&sclient=gws-wiz-serp"
+            },
+            {
+                title: "Neural Networks in Radiology",
+                image: "{{ url_for('static', filename='images/blog3.jpg') }}",
+                description: "AI-driven neural networks are revolutionizing radiology imaging and diagnostics.",
+                research: "https://ieeexplore.ieee.org/document/8759327",
+                blog: "https://www.google.com/search?q=Neural+Networks+in+Radiology&sca_esv=b2b9302155725f5a&sxsrf=AHTn8zrD2JmqrNbgFBoumvEEyHZcckScJQ%3A1742847269111&ei=Jb3hZ9jDBoubvr0Pl-SguQY&ved=0ahUKEwiY6v2CxKOMAxWLja8BHRcyKGcQ4dUDCBA&uact=5&oq=Neural+Networks+in+Radiology&gs_lp=Egxnd3Mtd2l6LXNlcnAiHE5ldXJhbCBOZXR3b3JrcyBpbiBSYWRpb2xvZ3kyBhAAGBYYHjIGEAAYFhgeMgsQABiABBiGAxiKBTILEAAYgAQYhgMYigUyBRAAGO8FMggQABiABBiiBDIIEAAYgAQYogQyCBAAGIAEGKIESKcKUO4GWO4GcAF4AZABAJgBrwGgAa8BqgEDMC4xuAEDyAEA-AEB-AECmAICoALPAagCFMICBxAjGCcY6gLCAg0QLhjRAxjHARgnGOoCwgIQEAAYAxi0AhjqAhiPAdgBAZgDFfEFT6zoef1V_7G6BgYIARABGAqSBwMxLjGgB68FsgcDMC4xuAe5AQ&sclient=gws-wiz-serp"
+            },
+            {
+                title: "AI in Drug Discovery",
+                image: "{{ url_for('static', filename='images/blog4.jpg') }}",
+                description: "The role of artificial intelligence in speeding up drug discovery and clinical trials.",
+                research: "https://www.nature.com/articles/s41573-021-00223-6",
+                blog: "https://www.google.com/search?q=AI+in+Drug+Discovery&sca_esv=b2b9302155725f5a&sxsrf=AHTn8zoq8VOnZc54s0sxwOQYlMPY57vKIw%3A1742847288347&ei=OL3hZ7j5FLaPvr0P8PqOyAY&ved=0ahUKEwi49ZOMxKOMAxW2h68BHXC9A2kQ4dUDCBA&uact=5&oq=AI+in+Drug+Discovery&gs_lp=Egxnd3Mtd2l6LXNlcnAiFEFJIGluIERydWcgRGlzY292ZXJ5MgsQABiABBiRAhiKBTILEAAYgAQYkQIYigUyCxAAGIAEGJECGIoFMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABEjZClDxBljxBnABeAGQAQCYAbwBoAG8AaoBAzAuMbgBA8gBAPgBAfgBApgCAqAC2QGoAhTCAgcQIxgnGOoCwgINEC4Y0QMYxwEYJxjqAsICFBAAGIAEGJECGLQCGIoFGOoC2AEBwgIUEAAYgAQY4wQYtAIY6QQY6gLYAQGYAxLxBUMadawNzb-cugYGCAEQARgBkgcDMS4xoAfjBbIHAzAuMbgHxwE&sclient=gws-wiz-serp"
+            },
+            {
+                title: "Deep Learning for Medical Imaging",
+                image: "{{ url_for('static', filename='images/blog5.jpg') }}",
+                description: "How deep learning models are enhancing medical imaging analysis.",
+                research: "https://www.sciencedirect.com/science/article/pii/S1361841521000709",
+                blog: "https://www.google.com/search?q=Deep+Learning+for+Medical+Imaging&sca_esv=b2b9302155725f5a&sxsrf=AHTn8zqu-Aa9oMuPiEjS2J4FF12QpZNz1Q%3A1742847310254&ei=Tr3hZ8mlD92k1e8PyJTa2QI&ved=0ahUKEwjJhM2WxKOMAxVdUvUHHUiKNisQ4dUDCBA&uact=5&oq=Deep+Learning+for+Medical+Imaging&gs_lp=Egxnd3Mtd2l6LXNlcnAiIURlZXAgTGVhcm5pbmcgZm9yIE1lZGljYWwgSW1hZ2luZzILEAAYgAQYkQIYigUyBhAAGBYYHjIGEAAYFhgeMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeMgYQABgWGB5Ihw1QzQZYzQZwAXgBkAEAmAGiAaABogGqAQMwLjG4AQPIAQD4AQH4AQKYAgKgAsIBqAISwgIHECMYJxjqAsICDRAuGNEDGMcBGCcY6gLCAhMQABiABBhDGLQCGIoFGOoC2AEBwgIcEC4YgAQY0QMYQxi0AhjHARjIAxiKBRjqAtgBAZgDFfEFV6wIZdLQQNy6BgYIARABGAGSBwMxLjGgB-MHsgcDMC4xuAetAQ&sclient=gws-wiz-serp"
+            },
+            {
+                title: "AI-powered Chatbots in Healthcare",
+                image: "{{ url_for('static', filename='images/blog6.jpg') }}",
+                description: "The rise of AI-powered chatbots assisting patients in real-time medical queries.",
+                research: "https://www.frontiersin.org/articles/10.3389/frai.2021.578161/full",
+                blog: "https://www.google.com/search?q=AI-powered+Chatbots+in+Healthcare&sca_esv=b2b9302155725f5a&sxsrf=AHTn8zo625b7XLMp-xvQyXNwyMzPmUZZfw%3A1742847332489&ei=ZL3hZ9TIHZz21e8PgZDdsQE&ved=0ahUKEwjUipqhxKOMAxUce_UHHQFINxYQ4dUDCBA&uact=5&oq=AI-powered+Chatbots+in+Healthcare&gs_lp=Egxnd3Mtd2l6LXNlcnAiIUFJLXBvd2VyZWQgQ2hhdGJvdHMgaW4gSGVhbHRoY2FyZTIGEAAYFhgeMgsQABiABBiGAxiKBTILEAAYgAQYhgMYigUyCxAAGIAEGIYDGIoFMgsQABiABBiGAxiKBTILEAAYgAQYhgMYigUyCBAAGIAEGKIEMggQABiABBiiBDIIEAAYgAQYogRI4AdQiwRYiwRwAXgBkAEAmAGqAaABqgGqAQMwLjG4AQPIAQD4AQH4AQKYAgKgAsgBqAIRwgIHECMYJxjqAsICDRAuGNEDGMcBGCcY6gLCAhQQABiABBiRAhi0AhiKBRjqAtgBAcICFBAAGIAEGOMEGLQCGOkEGOoC2AEBwgIXEC4YgAQYkQIYtAIYyAMYigUY6gLYAQGYAxPxBeWtIuCDu-29ugYGCAEQARgBkgcDMS4xoAeiB7IHAzAuMbgHtQE&sclient=gws-wiz-serp"
+            }
+        ];
+
+        function loadPosts() {
+            const container = document.querySelector("main");
+            posts.forEach(post => {
+                const article = document.createElement("article");
+                article.className = "bg-gray-800 p-4 rounded-lg shadow-lg text-center hover:bg-gray-700 transition-all";
+
+                article.innerHTML = `
+                    <img src="${post.image}" alt="${post.title}" class="w-full h-40 object-cover rounded">
+                    <h2 class="text-xl font-semibold mt-4">${post.title}</h2>
+                    <p class="text-gray-400 text-sm mt-2">${post.description}</p>
+                    <div class="mt-4">
+                        <a href="${post.research}" target="_blank" class="text-blue-400 hover:text-blue-600 font-semibold">📄 Research Paper</a> |
+                        <a href="${post.blog}" class="text-blue-400 hover:text-blue-600 font-semibold">📰 Read More</a>
+                    </div>
+                `;
+
+                container.appendChild(article);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", loadPosts);
+    </script>
+
+</body>
+
+</html>

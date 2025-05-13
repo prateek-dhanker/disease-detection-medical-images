@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - AI in Healthcare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* WhatsApp Button */
+        #whatsapp-chat {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        #whatsapp-chat img {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+
+<body class="bg-black text-white">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-gray-900 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <a href="{{ url_for('index') }}">
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="AI Logo" class="h-8 w-8"></a>
+                <a href="{{ url_for('index') }}">
+                    <h1 class="text-2xl font-bold">AI-Powered Disease Detection</h1>
+                </a>
+            </div>
+            <ul class="flex space-x-6">
+                <li><a href="{{ url_for('index') }}" class="hover:text-blue-400 transition">Home</a></li>
+                <li><a href="{{ url_for('about') }}" class="hover:text-blue-400 transition">About Us</a></li>
+                <li><a href="{{ url_for('diagnosis') }}" class="hover:text-blue-400 transition">Services</a></li>
+                <li><a href="#contact" class="hover:text-blue-400 transition">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-16 text-center">
+        <h2 class="text-4xl font-extrabold">About Us</h2>
+        <p class="text-gray-400 mt-4 text-lg">Empowering Healthcare with AI-driven Innovations</p>
+    </section>
+
+    <!-- How AI/ML Can Affect Disease Detection & Diagnosis -->
+    <section class="container mx-auto px-6 lg:px-16 py-10 flex flex-col md:flex-row items-center gap-8">
+        <img src="{{ url_for('static', filename='images/image2.png') }}" alt="AI in Disease Detection"
+            class="w-full md:w-1/2 rounded-lg shadow-lg">
+        <div class="md:w-1/2">
+            <h3 class="text-3xl font-semibold">How AI/ML Can Affect Disease Detection & Diagnosis</h3>
+            <p class="mt-4 text-gray-300">
+                AI and ML are revolutionizing disease detection and diagnosis by analyzing vast amounts of medical data
+                efficiently.
+                They help in early detection of diseases like cancer, pneumonia, and COVID-19 by recognizing patterns in
+                medical images,
+                lab results, and patient histories. AI-driven diagnosis can improve accuracy, reduce human error, and
+                provide personalized
+                treatment plans, ultimately saving lives and improving healthcare outcomes.
+            </p>
+        </div>
+    </section>
+
+    <!-- Research Papers Section -->
+    <section class="container mx-auto px-6 lg:px-16 py-10 flex flex-col md:flex-row items-center gap-8">
+        <div class="md:w-1/2">
+            <h3 class="text-3xl font-semibold">Research Papers & References</h3>
+            <ul class="mt-6 space-y-4 text-gray-300">
+                <li>📖 <a href="https://www.nature.com/articles/s41591-019-0532-0"
+                        class="text-blue-400 hover:underline">Artificial Intelligence in Healthcare: Past, Present, and
+                        Future</a></li>
+                <li>📖 <a href="https://www.science.org/doi/10.1126/science.aar4163"
+                        class="text-blue-400 hover:underline">Deep Learning for Healthcare: Opportunities, Challenges,
+                        and Applications</a></li>
+                <li>📖 <a href="https://www.thelancet.com/journals/lanmed/article/PIIS2589-7500(19)30123-2/fulltext"
+                        class="text-blue-400 hover:underline">AI-Based Medical Diagnosis: A Systematic Review</a></li>
+            </ul>
+        </div>
+        <img src="{{ url_for('static', filename='images/about_image_2.png') }}" alt="AI in Research"
+            class="w-full md:w-1/2 rounded-lg shadow-lg">
+    </section>
+
+    <!-- AI/ML Algorithms for Disease Detection & Medical Diagnosis -->
+    <section class="container mx-auto px-6 lg:px-16 py-10">
+        <h3 class="text-3xl font-semibold text-center">AI/ML Algorithms for Disease Detection & Medical Diagnosis</h3>
+        <p class="text-gray-300 mt-4 text-center">
+            AI/ML models use deep learning, decision trees, and neural networks to analyze symptoms, medical images, and
+            genetic data.
+            Techniques like CNNs for image recognition and NLP for medical text analysis are commonly used in disease
+            detection.
+        </p>
+    </section>
+
+    <!-- How to Build an AI-Based Disease Detection System -->
+    <section class="container mx-auto px-6 lg:px-16 py-10 flex flex-col md:flex-row items-center gap-8">
+        <img src="{{ url_for('static', filename='images/about_image_3.png') }}" alt="AI Model Development"
+            class="w-full md:w-1/2 rounded-lg shadow-lg">
+        <div class="md:w-1/2">
+            <h3 class="text-3xl font-semibold">How to Build an AI-Based Disease Detection System</h3>
+            <p class="mt-4 text-gray-300"><strong>1. Data Collection:</strong> Gather medical images, patient records,
+                and diagnostic data.</p>
+            <p class="mt-2 text-gray-300"><strong>2. Data Preparation:</strong> Clean and preprocess data by removing
+                noise and inconsistencies.</p>
+            <p class="mt-2 text-gray-300"><strong>3. Feature Selection:</strong> Identify key features like symptoms,
+                biomarkers, and genetic markers.</p>
+            <p class="mt-2 text-gray-300"><strong>4. Model Training:</strong> Train deep learning models (e.g., CNNs for
+                image-based analysis).</p>
+            <p class="mt-2 text-gray-300"><strong>5. Model Evaluation:</strong> Test accuracy using metrics like
+                precision, recall, and F1-score.</p>
+            <p class="mt-2 text-gray-300"><strong>6. Model Deployment:</strong> Integrate the AI model into a healthcare
+                application.</p>
+            <p class="mt-2 text-gray-300"><strong>7. Conclusion:</strong> AI is enhancing healthcare, but ethical
+                considerations and accuracy remain crucial.</p>
+        </div>
+    </section>
+    <!-- our team -->
+    <section class="bg-black text-white py-16">
+        <div class="container mx-auto px-6 lg:px-16">
+            <h2 class="text-3xl font-bold text-blue-400 mb-8 text-center">Our Team</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <!-- Deepesh Kumar - Full Stack Developer -->
+                <div
+                    class="bg-gray-900 p-6 rounded-lg text-center shadow-lg transition-transform transform hover:-translate-y-2 hover:shadow-2xl">
+                    <img src="{{ url_for('static', filename='images/deepesh_image.jpg') }}" alt="Deepesh Kumar"
+                        class="w-20 h-20 mx-auto mb-4 rounded-full border-2 border-blue-400">
+                    <h3 class="text-lg font-semibold">Deepesh Kumar</h3>
+                    <p class="text-blue-400 text-sm font-semibold hover:text-blue-300 transition-colors">Full Stack
+                        Developer</p>
+                    <p class="text-gray-400 mt-2">
+                        Designs and develops both frontend and backend of the AI-powered disease detection platform,
+                        ensuring seamless user experience and system integration.
+                    </p>
+                </div>
+
+                <!-- Prateek Dhanker - AI Model Trainer -->
+                <div
+                    class="bg-gray-900 p-6 rounded-lg text-center shadow-lg transition-transform transform hover:-translate-y-2 hover:shadow-2xl">
+                    <img src="{{ url_for('static', filename='images/prateek_image.jpg') }}" alt="Prateek Dhanker"
+                        class="w-20 h-20 mx-auto mb-4 rounded-full border-2 border-blue-400">
+                    <h3 class="text-lg font-semibold">Prateek Dhanker</h3>
+                    <p class="text-blue-400 text-sm font-semibold hover:text-blue-300 transition-colors">AI Model
+                        Trainer</p>
+                    <p class="text-gray-400 mt-2">
+                        Expert in training deep learning models for disease detection, optimizing AI algorithms, and
+                        improving accuracy using medical image datasets.
+                    </p>
+                </div>
+
+                <!-- Gaurav Kumar - AI Model & Backend Engineer -->
+                <div
+                    class="bg-gray-900 p-6 rounded-lg text-center shadow-lg transition-transform transform hover:-translate-y-2 hover:shadow-2xl">
+                    <img src="{{ url_for('static', filename='images/gaurav_image.jpg') }}" alt="Gaurav Kumar"
+                        class="w-20 h-20 mx-auto mb-4 rounded-full border-2 border-blue-400">
+                    <h3 class="text-lg font-semibold">Gaurav Kumar</h3>
+                    <p class="text-blue-400 text-sm font-semibold hover:text-blue-300 transition-colors">AI Model &
+                        Backend Engineer</p>
+                    <p class="text-gray-400 mt-2">
+                        Works on AI model training and backend infrastructure, ensuring efficient data processing and
+                        seamless deployment for disease detection.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- FAQs Section -->
+    <section class="container mx-auto px-6 lg:px-16 py-10">
+        <h3 class="text-3xl font-semibold text-center">Frequently Asked Questions (FAQs)</h3>
+        <div class="mt-6 space-y-4">
+            <div class="bg-gray-900 p-4 rounded-lg shadow-lg">
+                <h4 class="text-xl font-semibold">How accurate are AI-based disease detection systems?</h4>
+                <p class="text-gray-300 mt-2">AI models can achieve high accuracy, but results depend on data quality,
+                    algorithm efficiency, and clinical validation.</p>
+            </div>
+            <div class="bg-gray-900 p-4 rounded-lg shadow-lg">
+                <h4 class="text-xl font-semibold">Can AI replace doctors in medical diagnosis?</h4>
+                <p class="text-gray-300 mt-2">No, AI is designed to assist doctors by providing insights and improving
+                    diagnostic accuracy, not replace them.</p>
+            </div>
+            <div class="bg-gray-900 p-4 rounded-lg shadow-lg">
+                <h4 class="text-xl font-semibold">What are the biggest challenges in AI for healthcare?</h4>
+                <p class="text-gray-300 mt-2">Challenges include data privacy concerns, model biases, regulatory issues,
+                    and ensuring interpretability of AI predictions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Chat Button -->
+    <div id="whatsapp-chat">
+        <a href="https://wa.me/+917982460774" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/220/220236.png" alt="Chat with us">
+        </a>
+    </div>
+
+    <footer id="contact" class="bg-black text-white py-10 text-center md:text-left">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 px-6">
+            <!-- Information About -->
+            <div>
+                <h3 class="font-bold text-lg">Information About</h3>
+                <ul class="mt-4 space-y-2 text-gray-400">
+                    <li><a href="{{ url_for('index') }}" class="hover:text-white">Home</a></li>
+                    <li><a href="{{ url_for('about') }}" class="hover:text-white">About Us</a></li>
+                    <li><a href="{{ url_for('blog') }}" class="hover:text-white">Blog</a></li>
+                    <li><a href="{{ url_for('blog') }}" class="hover:text-white">Medical Research</a></li>
+                    <li><a href="{{ url_for('blog') }}" class="hover:text-white">AI in Healthcare</a></li>
+                </ul>
+            </div>
+
+            <!-- Quick Support -->
+            <div>
+                <h3 class="font-bold text-lg">Quick Support</h3>
+                <ul class="mt-4 space-y-2 text-gray-400">
+                    <li><a href="{{ url_for('contact_us') }}" class="hover:text-white">Contact Us</a></li>
+                    <li><a href="{{ url_for('about') }}" class="hover:text-white">Privacy Policy</a></li>
+                    <li><a href="{{ url_for('about') }}" class="hover:text-white">Terms & Conditions</a></li>
+                    <li><a href="{{ url_for('about') }}" class="hover:text-white">FAQs</a></li>
+                    <li><a href="{{ url_for('about') }}" class="hover:text-white">Report an Issue</a></li>
+                </ul>
+            </div>
+
+            <!-- Services -->
+            <div>
+                <h3 class="font-bold text-lg">Services</h3>
+                <ul class="mt-4 space-y-2 text-gray-400">
+                    <li><a href="{{ url_for('diagnosis') }}" class="hover:text-white">TB Detection</a></li>
+                    <li><a href="{{ url_for('diagnosis') }}" class="hover:text-white">Brain Tumor Detection</a></li>
+                    <li><a href="{{ url_for('diagnosis') }}" class="hover:text-white">Pneumonia Diagnosis</a></li>
+                    <li><a href="{{ url_for('diagnosis') }}" class="hover:text-white">Diabetes Risk Analysis</a></li>
+                    <li><a href="{{ url_for('diagnosis') }}" class="hover:text-white">COVID-19 Screening</a></li>
+                </ul>
+            </div>
+
+            <!-- Get In Touch -->
+            <div>
+                <h3 class="font-bold text-lg">Get In Touch</h3>
+                <ul class="mt-4 space-y-2 text-gray-400">
+                    <li class="flex items-center space-x-2">
+                        <span>&#9742;</span>
+                        <span>+91 7982460774</span>
+                    </li>
+                    <li class="flex items-center space-x-2">
+                        <span>&#9993;</span>
+                        <span>deepesh.kumar.ug22@nsut.ac.in</span>
+                        <a href="{{ url_for('contact_us') }}"
+                            class="mt-4 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Contact
+                            Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="mt-8 text-gray-500 text-sm text-center">
+            &copy; 2025 AI Disease Detection. All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
+
+</html>

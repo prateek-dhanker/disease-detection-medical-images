@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Diagnosis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/diagnosis.css') }}">
+</head>
+
+<body>
+    <header>
+        <div class="logo-container">
+            <a href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo">
+            </a>
+            <a href="{{ url_for('index') }}" style="color: white; font-size: 24px; text-decoration: none;">AI-Powered
+                Disease Detection</a>
+        </div>
+        <nav class="desktop-nav">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('diagnosis') }}">Services</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="#contact">Contact Us</a>
+        </nav>
+        <div class="menu-container">
+            <div class="menu-icon" onclick="toggleMenu()">⋮</div>
+            <div class="dropdown-menu" id="dropdownMenu">
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('diagnosis') }}">Services</a>
+                <a href="{{ url_for('about') }}">About Us</a>
+                <a href="{{ url_for('contact_us') }}">Contact Us</a>
+                <a href="{{ url_for('blog') }}">Blog</a>
+                <a href="{{ url_for('about') }}">FAQs</a>
+                <a href="{{ url_for('feedback') }}">Testimonials</a>
+            </div>
+        </div>
+    </header>
+    <div style="display: flex; justify-content: center; align-items: center; position: relative; width: 100%;">
+        <h1 style="color: #1E90FF; text-align: center;">Welcome to AI-Powered Disease Detection</h1>
+        <a href="#diagnosis-section"
+            style="position: absolute; right: 20px; background-color: #1E90FF; color: white; padding: 8px 16px; text-decoration: none; border-radius: 5px; font-weight: bold;">Start</a>
+    </div>
+
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide"><img
+                    src="{{ url_for('static', filename='images/Future-Of-AI-In-HealthCare-1152x648.png') }}"
+                    alt="Image 1"></div>
+            <div class="slide"><img src="{{ url_for('static', filename='images/image3.png') }}" alt="Image 2"></div>
+            <div class="slide"><img src="{{ url_for('static', filename='images/p1.png') }}" alt="Image 3"></div>
+            <div class="slide"><img src="{{ url_for('static', filename='images/a1.jpg') }}" alt="Image 4"></div>
+            <div class="slide"><img src="{{ url_for('static', filename='images/c1.jpg') }}" alt="Image 5"></div>
+            <div class="slide"><img src="{{ url_for('static', filename='images/b1.jpg') }}" alt="Image 6"></div>
+            <div class="slide"><img src="{{ url_for('static', filename='images/t2.jpg') }}" alt="Image 7"></div>
+            <div class="slide"><img src="{{ url_for('static', filename='images/c2.jpg') }}" alt="Image 8"></div>
+            <div class="slide"><img src="{{ url_for('static', filename='images/b2.jpg') }}" alt="Image 9"></div>
+            <div class="slide"><img src="{{ url_for('static', filename='images/t3.jpg') }}" alt="Image 10"></div>
+        </div>
+        <button class="slider-btn prev" onclick="prevSlide()">&#10094;</button>
+        <button class="slider-btn next" onclick="nextSlide()">&#10095;</button>
+    </div>
+    <!-- Indicator Dots -->
+    <div class="indicator-container">
+        <span class="indicator active" onclick="goToSlide(0)"></span>
+        <span class="indicator" onclick="goToSlide(1)"></span>
+        <span class="indicator" onclick="goToSlide(2)"></span>
+        <span class="indicator" onclick="goToSlide(3)"></span>
+        <span class="indicator" onclick="goToSlide(4)"></span>
+        <span class="indicator" onclick="goToSlide(5)"></span>
+        <span class="indicator" onclick="goToSlide(6)"></span>
+        <span class="indicator" onclick="goToSlide(7)"></span>
+        <span class="indicator" onclick="goToSlide(8)"></span>
+        <span class="indicator" onclick="goToSlide(9)"></span>
+        <span class="indicator" onclick="goToSlide(10)"></span>
+    </div>
+    <br>
+    <h3>Upload your medical scan, and our AI will analyze it for potential diseases.</h3>
+
+    <div id="diagnosis-section" class="container">
+        <!-- X-Ray Diagnosis -->
+        <div class="diagnosis-container">
+            <img src="{{ url_for('static', filename='images/x-ray.png') }}" alt="X-Ray Analysis">
+            <h2>X-Ray Analysis</h2>
+            <p>Upload an X-ray image for AI-powered diagnosis.</p>
+            <input type="file" id="xrayUpload" class="file-upload" accept="image/*">
+            <p id="xrayFileName"></p>
+            <button class="clear-button" onclick="clearFile('xrayUpload')">Clear</button>
+            <button class="diagnosis-button"
+                onclick="startDiagnosis('xrayUpload', 'xrayFileName', 1, 'loadingXray', 'resultXray', 'xrayOutput', 'xrayshowResultBtn')">
+                Start Analysis
+            </button>
+            <p id="loadingXray" class="loading-status" style="display: none;">Processing...</p>
+            <p id="resultXray" class="diagnosis-result" style="display: none;"></p>
+            <img id="xrayOutput" class="result-image" style="display:none;">
+            <button id="xrayshowResultBtn" style="display: none;">Show Result</button>
+        </div>
+
+        <!-- MRI Diagnosis -->
+        <div class="diagnosis-container">
+            <img src="{{ url_for('static', filename='images/mri_logo.jpg') }}" alt="MRI Analysis">
+            <h2>MRI Analysis</h2>
+            <p>Upload an MRI scan for AI-powered brain analysis.</p>
+            <input type="file" id="mriUpload" class="file-upload" accept="image/*">
+            <p id="mriFileName"></p>
+            <button class="clear-button" onclick="clearFile('mriUpload')">Clear</button>
+            <button class="diagnosis-button"
+                onclick="startDiagnosis('mriUpload', 'mriFileName', 2, 'loadingMri', 'resultMri', 'mriOutput', 'mrishowResultBtn')">
+                Start Analysis
+            </button>
+            <p id="loadingMri" class="loading-status" style="display: none;">Processing...</p>
+            <p id="resultMri" class="diagnosis-result" style="display: none;"></p>
+            <img id="mriOutput" class="result-image" style="display:none;">
+            <button id="mrishowResultBtn" style="display: none;">Show Result</button>
+        </div>
+
+        <!-- Retina Diagnosis -->
+        <div class="diagnosis-container">
+            <img src="{{ url_for('static', filename='images/icons8-retina-64.png') }}" alt="Retina Analysis">
+            <h2>Retina Analysis</h2>
+            <p>Upload an Retinal Photography scan for AI-powered brain analysis.</p>
+            <input type="file" id="retinaUpload" class="file-upload" accept="image/*">
+            <p id="retinaFileName"></p>
+            <button class="clear-button" onclick="clearFile('retinaUpload')">Clear</button>
+            <button class="diagnosis-button"
+                onclick="startDiagnosis('retinaUpload', 'retinaFileName', 3, 'loadingretina', 'resultretina', 'retinaOutput', 'retinashowResultBtn')">
+                Start Analysis
+            </button>
+            <p id="loadingretina" class="loading-status" style="display: none;">Processing...</p>
+            <p id="resultretina" class="diagnosis-result" style="display: none;"></p>
+            <img id="retinaOutput" class="result-image" style="display:none;">
+            <button id="retinashowResultBtn" style="display: none;">Show Result</button>
+        </div>
+
+        <!-- Kidney Stone Diagnosis -->
+        <div class="diagnosis-container">
+            <img src="{{ url_for('static', filename='images/icons8-kidney-48.png') }}" alt="Kidney Stone Analysis">
+            <h2>Kidney Stone Analysis</h2>
+            <p>Upload a kidney ultrasound or CT scan for AI-powered stone detection.</p>
+            <input type="file" id="kidneyUpload" class="file-upload" accept="image/*">
+            <p id="kidneyFileName"></p>
+            <button class="clear-button" onclick="clearFile('kidneyUpload')">Clear</button>
+            <button class="diagnosis-button"
+                onclick="startDiagnosis('kidneyUpload', 'kidneyFileName', 4, 'loadingkidney', 'resultkidney', 'kidneyOutput', 'kidneyshowResultBtn')">
+                Start Analysis
+            </button>
+            <p id="loadingkidney" class="loading-status" style="display: none;">Processing...</p>
+            <p id="resultkidney" class="diagnosis-result" style="display: none;"></p>
+            <img id="kidneyOutput" class="result-image" style="display:none;">
+            <button id="kidneyshowResultBtn" style="display: none;">Show Result</button>
+        </div>
+
+        <!-- Bone Fracture Diagnosis -->
+        <div class="diagnosis-container">
+            <img src="{{ url_for('static', filename='images/bone.jpg') }}" alt="Bone Fracture Analysis">
+            <h2>Bone Fracture Analysis</h2>
+            <p>Upload a Bone X-ray scan for AI-powered bone fracture analysis.</p>
+            <input type="file" id="boneUpload" class="file-upload" accept="image/*">
+            <p id="boneFileName"></p>
+            <button class="clear-button" onclick="clearFile('boneUpload')">Clear</button>
+            <button class="diagnosis-button"
+                onclick="startDiagnosis('boneUpload', 'boneFileName', 5, 'loadingbone', 'resultbone', 'boneOutput', 'boneshowResultBtn')">
+                Start Analysis
+            </button>
+            <p id="loadingbone" class="loading-status" style="display: none;">Processing...</p>
+            <p id="resultbone" class="diagnosis-result" style="display: none;"></p>
+            <img id="boneOutput" class="result-image" style="display:none;">
+            <button id="boneshowResultBtn" style="display: none;">Show Result</button>
+        </div>
+    </div>
+
+
+    <br>
+    <section class="important-section">
+        <div class="important-content">
+            <h3>Important Information</h3>
+            <p>
+                This AI-powered diagnosis system is designed to assist medical professionals, not replace them.
+                Always consult with a healthcare provider for a definitive diagnosis and treatment plan.
+            </p>
+            <p>
+                The AI models are trained on extensive medical image datasets and continuously improved for accuracy.
+            </p>
+        </div>
+    </section>
+
+    <br>
+    <!-- diseses info -->
+    <div class="main-container">
+        <div class="header-title">Disease Information</div>
+        <p>Click below to know more about different diseases detected by AI.</p>
+        <button class="info-button" onclick="toggleDiseaseSection()">Know More</button>
+
+        <div id="diseaseListSection" class="disease-section">
+
+            <!-- X-ray Test -->
+            <div class="category-section">
+                <h2 class="category-title">X-ray Test</h2>
+                <div class="disease-listing">
+                    <div class="disease-box" onclick="showPopup('COVID-19')">
+                        <img class="disease-image" src="{{ url_for('static', filename='images/x-ray.png') }}"
+                            alt="COVID-19">
+                        <p>COVID-19</p>
+                    </div>
+                    <div class="disease-box" onclick="showPopup('Pneumonia')">
+                        <img class="disease-image" src="{{ url_for('static', filename='images/x-ray.png') }}"
+                            alt="Pneumonia">
+                        <p>Pneumonia</p>
+                    </div>
+                    <div class="disease-box" onclick="showPopup('Tuberculosis')">
+                        <img class="disease-image" src="{{ url_for('static', filename='images/x-ray.png') }}"
+                            alt="Tuberculosis">
+                        <p>Tuberculosis</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Retina Test -->
+            <div class="category-section">
+                <h2 class="category-title">Retina Test</h2>
+                <div class="disease-listing">
+                    <div class="disease-box" onclick="showPopup('Cataract')">
+                        <img class="disease-image" src="{{ url_for('static', filename='images/icons8-retina-64.png') }}"
+                            alt="Cataract">
+                        <p>Cataract</p>
+                    </div>
+                    <div class="disease-box" onclick="showPopup('Diabetic Retinopathy')">
+                        <img class="disease-image" src="{{ url_for('static', filename='images/icons8-retina-64.png') }}"
+                            alt="Diabetic Retinopathy">
+                        <p>Diabetic Retinopathy</p>
+                    </div>
+                    <div class="disease-box" onclick="showPopup('Glaucoma')">
+                        <img class="disease-image" src="{{ url_for('static', filename='images/icons8-retina-64.png') }}"
+                            alt="Glaucoma">
+                        <p>Glaucoma</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- MRI Test -->
+            <div class="category-section">
+                <h2 class="category-title">MRI Test</h2>
+                <div class="disease-listing">
+                    <div class="disease-box" onclick="showPopup('Glioma')">
+                        <img class="disease-image" src="{{ url_for('static', filename='images/mri_logo.jpg') }}"
+                            alt="Glioma">
+                        <p>Glioma</p>
+                    </div>
+                    <div class="disease-box" onclick="showPopup('Meningioma')">
+                        <img class="disease-image" src="{{ url_for('static', filename='images/mri_logo.jpg') }}"
+                            alt="Meningioma">
+                        <p>Meningioma</p>
+                    </div>
+                    <div class="disease-box" onclick="showPopup('Pituitary')">
+                        <img class="disease-image" src="{{ url_for('static', filename='images/mri_logo.jpg') }}"
+                            alt="Pituitary">
+                        <p>Pituitary</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Kidney Test -->
+            <div class="category-section">
+                <h2 class="category-title">Kidney Test</h2>
+                <div class="disease-listing">
+                    <div class="disease-box" onclick="showPopup('Kidney Stones')">
+                        <img class="disease-image" src="{{ url_for('static', filename='images/icons8-kidney-48.png') }}"
+                            alt="Kidney Stones">
+                        <p>Kidney Stones</p>
+                    </div>
+                    <div class="disease-box" onclick="showPopup('Kidney Infection')">
+                        <img class="disease-image" src="{{ url_for('static', filename='images/icons8-kidney-48.png') }}"
+                            alt="Kidney Infection">
+                        <p>Kidney Infection</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bone Test -->
+            <div class="category-section">
+                <h2 class="category-title">Bone Fractured Detection</h2>
+                <div class="disease-listing">
+                    <div class="disease-box" onclick="showPopup('Bone Fracture')">
+                        <img class="disease-image" src="{{ url_for('static', filename='images/bone.jpg') }}" alt="bone">
+                        <p>Bone Fracture</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <!-- Pop-up Window -->
+    <div id="diseasePopup" class="popup-overlay">
+        <div class="popup-box">
+            <!-- Pop-up Header -->
+            <div class="popup-header">
+                <button class="close-popup" onclick="closePopup()">&times;</button>
+            </div>
+
+            <!-- Pop-up Content -->
+            <div id="popupContent" class="popup-content"></div>
+        </div>
+    </div>
+
+
+
+    <footer id="contact" class="footer">
+        <div class="footer-container">
+            <!-- Information About -->
+            <div class="footer-section">
+                <h3>Information About</h3>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About Us</a></li>
+                    <li><a href="{{ url_for('blog') }}">Blog</a></li>
+                    <li><a href="{{ url_for('blog') }}">Medical Research</a></li>
+                    <li><a href="{{ url_for('blog') }}">AI in Healthcare</a></li>
+                </ul>
+            </div>
+
+            <!-- Quick Support -->
+            <div class="footer-section">
+                <h3>Quick Support</h3>
+                <ul>
+                    <li><a href="{{ url_for('contact_us') }}">Contact Us</a></li>
+                    <li><a href="{{ url_for('about') }}">Privacy Policy</a></li>
+                    <li><a href="{{ url_for('about') }}">Terms & Conditions</a></li>
+                    <li><a href="{{ url_for('about') }}">FAQs</a></li>
+                    <li><a href="{{ url_for('feedback') }}">Report an Issue</a></li>
+                </ul>
+            </div>
+
+            <!-- Services -->
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="{{ url_for('diagnosis') }}">TB Detection</a></li>
+                    <li><a href="{{ url_for('diagnosis') }}">Brain Tumor Detection</a></li>
+                    <li><a href="{{ url_for('diagnosis') }}">Pneumonia Diagnosis</a></li>
+                    <li><a href="{{ url_for('diagnosis') }}">Diabetes Risk Analysis</a></li>
+                    <li><a href="{{ url_for('diagnosis') }}">COVID-19 Screening</a></li>
+                </ul>
+            </div>
+
+            <!-- Get In Touch -->
+            <div class="footer-section">
+                <h3>Get In Touch</h3>
+                <ul>
+                    <li class="contact-item">
+                        <span>&#9742;</span>
+                        <span>+91 7982460774</span>
+                    </li>
+                    <li class="contact-item">
+                        <span>&#9993;</span>
+                        <span>deepesh.kumar.ug22@nsut.ac.in</span>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('contact_us') }}" class="contact-btn">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="copyright">
+            &copy; 2025 AI Disease Detection. All Rights Reserved.
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='js/diagnosis.js') }}"></script>
+
+</body>
+
+</html>

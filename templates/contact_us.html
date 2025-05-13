@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - AI in Healthcare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* WhatsApp Button */
+        #whatsapp-chat {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        #whatsapp-chat img {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+
+<body class="bg-black text-white">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-gray-900 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <a href="{{ url_for('index') }}">
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="AI Logo" class="h-8 w-8"></a>
+                <a href="{{ url_for('index') }}">
+                    <h1 class="text-2xl font-bold">AI-Powered Disease Detection</h1>
+                </a>
+            </div>
+            <ul class="flex space-x-6">
+                <li><a href="{{ url_for('index') }}" class="hover:text-blue-400 transition">Home</a></li>
+                <li><a href="{{ url_for('about') }}" class="hover:text-blue-400 transition">About Us</a></li>
+                <li><a href="{{ url_for('diagnosis') }}" class="hover:text-blue-400 transition">Services</a></li>
+                <li><a href="{{ url_for('feedback') }}" class="hover:text-blue-400 transition">Feedback</a></li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="bg-black text-white py-16">
+        <div class="container mx-auto px-6 lg:px-16">
+            <h2 class="text-4xl font-extrabold text-center">Contact Us</h2>
+            <p class="text-gray-400 text-center mt-4">
+                We'd love to hear from you. Fill out the form and we'll get back to you.
+            </p>
+
+            <div class="mt-8 flex flex-col md:flex-row gap-8">
+                <!-- Contact Information -->
+                <div class="md:w-1/2 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4">Contact Information</h3>
+                    <p class="flex items-center mb-2"><span class="text-blue-400 text-lg mr-2">📍</span> 1234 AI
+                        Healthcare Blvd, Medical District, Suite 500, San Francisco, CA 94103</p>
+                    <p class="flex items-center mb-2"><span class="text-blue-400 text-lg mr-2">📞</span> +91 7982460774
+                    </p>
+                    <p class="flex items-center mb-2">
+                        <span class="text-blue-400 text-lg mr-2">📧</span>
+                        <a href="mailto:deepesh.kumar.ug22@nsut.ac.in" class="text-blue-400 hover:underline">
+                            deepesh.kumar.ug22@nsut.ac.in
+                        </a>
+                    </p>
+                    <p class="flex items-center"><span class="text-blue-400 text-lg mr-2">⏰</span> Monday - Friday: 9AM
+                        - 5PM (PST)</p>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="md:w-1/2 p-6 rounded-lg shadow-lg">
+                    <form>
+                        <label class="block mb-2">Full Name</label>
+                        <input type="text"
+                            class="w-full p-2 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:border-blue-400">
+
+                        <label class="block mt-4 mb-2">Your Email</label>
+                        <input type="email"
+                            class="w-full p-2 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:border-blue-400">
+
+                        <label class="block mt-4 mb-2">Your Message</label>
+                        <textarea
+                            class="w-full p-2 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:border-blue-400"></textarea>
+
+                        <button type="submit"
+                            class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Social Media Section -->
+            <div class="mt-8 text-center">
+                <h3 class="text-2xl font-bold mb-3">Follow Us</h3>
+                <div class="flex justify-center space-x-6 text-2xl">
+                    <a href="#" class="text-gray-400 hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-blue-500"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-pink-500"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-blue-700"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Font Awesome Icons for Social Media -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+
+    <!-- Footer Section -->
+    <footer class="bg-black p-10 text-gray-400 text-center">
+        <p>&copy; 2025 AI Disease Detection. All Rights Reserved.</p>
+    </footer>
+
+    <!-- WhatsApp Chat Button -->
+    <div id="whatsapp-chat">
+        <a href="https://wa.me/+917982460774" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/220/220236.png" alt="Chat with us">
+        </a>
+    </div>
+
+</body>
+
+</html>

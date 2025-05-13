@@ -1,0 +1,468 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #121212;
+    color: white;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+    background-color: black;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+}
+
+/* Logo and Title */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 40px;  /* Adjust size as needed */
+    margin-right: 10px;
+}
+
+/* Desktop Navigation */
+.desktop-nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 400;
+    transition: color 0.3s;
+}
+
+.desktop-nav a:hover {
+    color: #00d4ff;
+}
+
+/* Menu Icon */
+.menu-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    background: black;
+    padding: 10px;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.dropdown-menu a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    transition: background 0.3s;
+}
+
+.dropdown-menu a:hover {
+    background: #00d4ff;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    background-image: url('https://cdn.pixabay.com/photo/2025/02/07/13/00/ai-generated-9390016_1280.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+    position: relative;
+    max-width: 600px;
+    z-index: 1;
+}
+
+.hero h2 {
+    font-size: 42px;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 18px;
+    margin: 15px 0;
+}
+
+.cta-button {
+    display: inline-block;
+    background: #00d4ff;
+    color: black;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.cta-button:hover {
+    background: #0099cc;
+}
+
+
+/* about */
+#about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    max-width: 1200px;
+}
+
+.text-section {
+    flex: 1;
+}
+
+
+.text-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    
+}
+
+.text-section p {
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+.carousel {
+    width: 500px;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+    background: black;
+}
+
+.carousel-track {
+    display: flex;
+    width: calc(100% * 7); /* 6 images + 1 extra for seamless transition */
+    animation: scroll 18s linear infinite;
+}
+
+.carousel-track img {
+    width: calc(100% / 7); /* Adjust width for smooth transition */
+    object-fit: cover;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Read More Button */
+.read-more-btn {
+    background-color:#00d4ff ;
+    color: white;
+    font-size: 16px;
+    padding: 12px 20px;
+    border: none;
+    margin-top: 2px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.read-more-btn:hover {
+    background-color:#0099cc ;
+    transform: scale(1.05);
+}
+
+
+/* Service Section */
+.services h2{
+    position: relative;
+    display: inline-block;
+    padding-bottom: 20px;
+    font-size: 30px;
+}
+
+.services h2::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 100px; /* Fixed underline width */
+    height: 1px; /* Thickness of underline */
+    background-color: white; /* Underline color */
+    transform: translateX(-50%); /* Centers the underline */
+    margin-bottom: 10px;
+}
+
+.services {
+    text-align: center;
+    padding: 60px 10%;
+}
+
+h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.service-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.service-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    width: 280px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.service-box:hover {
+    transform: translateY(-10px);
+}
+
+h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 14px;
+}
+
+.visit-diagnosis-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.visit-diagnosis-btn {
+    background: #0077ff;
+    color: white;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s ease-in-out;
+}
+
+.visit-diagnosis-btn:hover {
+    background: #0055cc;
+    transform: scale(1.05);
+}
+
+
+/* Extra part 1: Testimonial */
+/* General Styling */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #0d0d0d;
+  color: white;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Extra part 1: Testimonial */
+.testimonial-container {
+  text-align: center;
+  background: #1a1a1a;
+  color: white;
+  padding: 40px;
+  border-radius: 15px;
+  max-width: 700px;
+  margin: 40px auto;
+  box-shadow: 0px 0px 20px rgba(0, 123, 255, 0.3);
+}
+
+.testimonial {
+  font-size: 20px;
+  font-style: italic;
+  margin-bottom: 15px;
+}
+
+.controls button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.controls button:hover {
+  background: #0056b3;
+}
+
+
+/* Extra part 5: How It Works */
+.how-it-works {
+  text-align: center;
+  background: #222;
+  color: white;
+  padding: 40px;
+  border-radius: 15px;
+  max-width: 900px;
+  margin: 40px auto;
+  box-shadow: 0px 0px 20px rgba(0, 123, 255, 0.3);
+}
+
+.steps {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.step {
+  width: 30%;
+  padding: 25px;
+  background: #333;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(0, 123, 255, 0.3);
+  transition: transform 0.3s ease-in-out;
+}
+
+.step:hover {
+  transform: translateY(-5px);
+}
+
+.step img {
+  width: 70px;
+  margin-bottom: 15px;
+}
+
+.step h3 {
+  color: #007bff;
+  font-size: 22px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .stats, .steps {
+    flex-direction: column;
+  }
+  
+  .stat-box, .step {
+    width: 90%;
+    margin: auto;
+  }
+}
+
+/* Footer Styling */
+.footer {
+    background-color: black;
+    color: white;
+    padding: 40px 0;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    width: 22%;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+
+.footer-section p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+/* Icons */
+.footer-section i {
+    margin-right: 8px;
+    color: white;
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+}

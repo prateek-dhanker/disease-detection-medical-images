@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Disease Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <a href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo">
+            </a>
+            <a href="{{ url_for('index') }}" style="color: white; font-size: 24px; text-decoration: none;">AI-Powered Disease Detection</a>
+        </div>
+        <nav class="desktop-nav">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact Us</a>
+        </nav>
+        <div class="menu-container">
+            <div class="menu-icon" onclick="toggleMenu()">⋮</div>
+            <div class="dropdown-menu" id="dropdownMenu">
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('diagnosis') }}">Services</a>
+                <a href="{{ url_for('blog') }}">Blog</a>
+                <a href="{{ url_for('about') }}">About Us</a>
+                <a href="{{ url_for('contact_us') }}">Contact Us</a>
+                <a href="{{ url_for('about') }}">FAQs</a>
+                <a href="{{ url_for('feedback') }}">Testimonials</a>
+            </div>
+        </div>
+    </header>
+    
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Detect Diseases with AI</h2>
+            <p>Upload your medical scans and get instant AI-based diagnosis.</p>
+            <a href="{{ url_for('diagnosis') }}" class="cta-button">Start Diagnosis</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="about-content">
+            <div class="text-section">
+                <h2>About Our AI System</h2>
+                <p>
+                    Our AI model analyzes medical images with deep learning, detecting diseases early in X-rays, MRIs, and CT scans. It improves diagnostic accuracy, minimizes errors, and assists doctors in making faster, informed decisions while automating workflows for efficient healthcare.
+                </p>
+                <button class="read-more-btn" onclick="readMore()">Read More...</button>
+            </div>
+            
+            <div class="carousel">
+                <div class="carousel-track">
+                    <img src="{{ url_for('static', filename='images/image1.png') }}" alt="Image 1">
+                    <img src="{{ url_for('static', filename='images/image2.png') }}" alt="Image 2">
+                    <img src="{{ url_for('static', filename='images/image3.png') }}" alt="Image 3">
+                    <img src="{{ url_for('static', filename='images/image4.png') }}" alt="Image 4">
+                    <img src="{{ url_for('static', filename='images/image5.png') }}" alt="Image 5">
+                    <img src="{{ url_for('static', filename='images/image6.png') }}" alt="Image 6">
+                    <img src="{{ url_for('static', filename='images/image1.png') }}" alt="Image 1">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <section id="services" class ="services">
+        <h2>Our Services</h2>
+        <div class="service-container">
+            <div class="service-box">
+                <h3>Pneumonia Detection</h3>
+                <p>AI-powered detection of pneumonia through X-ray image analysis, ensuring early diagnosis and treatment.</p>
+            </div>
+            <div class="service-box">
+                <h3>Tuberculosis Detection</h3>
+                <p>Deep learning-based early detection of tuberculosis using chest X-rays for quick and accurate diagnosis.</p>
+            </div>
+            <div class="service-box">
+                <h3>COVID-19 Detection</h3>
+                <p>AI-driven detection of COVID-19 through X-ray image screening for rapid diagnosis and early intervention.</p>
+            </div>
+        </div>
+        
+        <div class="service-container">
+            <div class="service-box">
+                <h3>Brain Tumor Analysis</h3>
+                <p>AI-based MRI scan assessment to identify and classify brain tumors with high accuracy.</p>
+            </div>
+        </div>
+        <!-- Visit Diagnosis Page Button -->
+    <div class="visit-diagnosis-container">
+        <a href="{{ url_for('diagnosis') }}" class="visit-diagnosis-btn">Visit Diagnosis Page</a>
+    </div>
+
+    </section>
+
+
+    <!--Extra part 1-->
+    <div class="testimonial-container">
+        <h2>What Our Users Say</h2>
+        <div class="testimonial">
+            <p id="testimonial-text">"This AI-powered diagnosis is a game changer!"</p>
+            <h4 id="testimonial-author">- Dr. A. Sharma</h4>
+        </div>
+        <div class="controls">
+            <button onclick="prevTestimonial()">&#10094;</button>
+            <button onclick="nextTestimonial()">&#10095;</button>
+        </div>
+    </div>
+    
+    <!--Extra part 5-->
+    <div class="how-it-works">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <img src="{{ url_for('static', filename='images/cloud-up-arrow-svgrepo-com.svg') }}" alt="Upload Image">
+                <h3>Step 1</h3>
+                <p>Upload an X-ray or medical image.</p>
+            </div>
+            <div class="step">
+                <img src="{{ url_for('static', filename='images/cloud-backup-svgrepo-com.svg') }}" alt="AI Processing">
+                <h3>Step 2</h3>
+                <p>Our AI analyzes the image.</p>
+            </div>
+            <div class="step">
+                <img src="{{ url_for('static', filename='images/download.svg') }}" alt="Get Report">
+                <h3>Step 3</h3>
+                <p>Receive an instant diagnosis report.</p>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+
+
+    
+    <!--Footer part-->
+    <footer id="contact" class="footer">
+        <div class="footer-container">
+            <!-- Information About -->
+            <div class="footer-section">
+                <h3>Information About</h3>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About Us</a></li>
+                    <li><a href="{{ url_for('blog') }}">Blog</a></li>
+                    <li><a href="{{ url_for('blog') }}">Medical Research</a></li>
+                    <li><a href="{{ url_for('blog') }}">AI in Healthcare</a></li>
+                </ul>
+            </div>
+
+            <!-- Quick Support -->
+            <div class="footer-section">
+                <h3>Quick Support</h3>
+                <ul>
+                    <li><a href="{{ url_for('contact_us') }}">Contact Us</a></li>
+                    <li><a href="{{ url_for('about') }}">Privacy Policy</a></li>
+                    <li><a href="{{ url_for('about') }}">Terms & Conditions</a></li>
+                    <li><a href="{{ url_for('about') }}">FAQs</a></li>
+                    <li><a href="{{ url_for('feedback') }}">Report an Issue</a></li>
+                </ul>
+            </div>
+
+            <!-- Services -->
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="{{ url_for('diagnosis') }}">TB Detection</a></li>
+                    <li><a href="{{ url_for('diagnosis') }}">Brain Tumor Detection</a></li>
+                    <li><a href="{{ url_for('diagnosis') }}">Pneumonia Diagnosis</a></li>
+                    <li><a href="{{ url_for('diagnosis') }}">Diabetes Risk Analysis</a></li>
+                    <li><a href="{{ url_for('diagnosis') }}">COVID-19 Screening</a></li>
+                </ul>
+            </div>
+
+            <!-- Get In Touch -->
+            <div class="footer-section">
+                <h3>Get In Touch</h3>
+                <p><i class="fas fa-phone-alt"></i> +91 7982460774</p>
+                <p><i class="fas fa-envelope"></i> deepesh.kumar.ug22@nsut.ac.in</p>
+                <a href="{{ url_for('contact_us') }}" class="mt-4 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+   <footer>
+        <p>© 2025 AI Disease Detection. All Rights Reserved.</p>
+    </footer>
+
+
+</body>
+</html>

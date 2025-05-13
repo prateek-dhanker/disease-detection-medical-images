@@ -1,0 +1,159 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #121212;
+    color: white;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+    background-color: black;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+}
+
+/* Logo and Title */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 40px;
+    /* Adjust size as needed */
+    margin-right: 10px;
+}
+
+/* Desktop Navigation */
+.desktop-nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 400;
+    transition: color 0.3s;
+}
+
+.desktop-nav a:hover {
+    color: #00d4ff;
+}
+
+/* Menu Icon */
+.menu-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    background: black;
+    padding: 10px;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.dropdown-menu a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    transition: background 0.3s;
+}
+
+.dropdown-menu a:hover {
+    background: #00d4ff;
+}
+
+
+/* Container for image and text */
+#ai-healthcare-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 50px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Image Section */
+#ai-image-section {
+    width: 50%;
+    text-align: left;
+}
+
+#ai-healthcare-image {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Text Section */
+#ai-text-section {
+    width: 45%;
+    margin-top: 30px;
+}
+
+#ai-heading {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.ai-description {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    #ai-healthcare-container {
+        flex-direction: column;
+    }
+
+    #ai-image-section,
+    #ai-text-section {
+        width: 100%;
+        text-align: center;
+    }
+
+    #ai-text-section {
+        text-align: left;
+    }
+}
+
+/* WhatsApp Button */
+#whatsapp-chat {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#whatsapp-chat img {
+    width: 40px;
+    height: 40px;
+}
